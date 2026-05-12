@@ -6,18 +6,19 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mk-widget-card.verc
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "MK_Widget | Digital Card & Plugin Widget System",
-    template: "%s | MK_Widget",
+    default: "MK Widget Card | Hệ sinh thái eCard & Widget thông minh",
+    template: "%s | MK Widget Card",
   },
   description:
-    "MK_Widget la he sinh thai eCard, QR, plugins va widget cho iOS, Android va developer.",
+    "MK Widget Card là hệ sinh thái danh thiếp kỹ thuật số (eCard), mã QR vCard và tiện ích màn hình chính (Widget) cho iOS và Android.",
   keywords: [
-    "MK_Widget",
-    "MK_eCard",
-    "digital card",
+    "MK Widget Card",
     "eCard",
-    "widget",
-    "QR",
+    "Digital Card",
+    "Danh thiếp thông minh",
+    "Widget",
+    "QR Code",
+    "vCard",
     "Next.js",
   ],
   authors: [{ name: "Tran Minh Khoi", url: "https://tranminhkhoi.dev" }],
@@ -27,11 +28,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "MK_Widget | Digital Card & Plugin Widget System",
+    title: "MK Widget Card | Hệ sinh thái eCard & Widget thông minh",
     description:
-      "Landing page gioi thieu MK_Widget: eCard, QR, plugins, widget va guide production.",
+      "Landing page giới thiệu MK Widget Card: eCard, mã QR thông minh, Widget và hướng dẫn thiết lập cho iOS & Android.",
     url: "/",
-    siteName: "MK_Widget",
+    siteName: "MK Widget Card",
     locale: "vi_VN",
     type: "website",
     images: [
@@ -39,15 +40,15 @@ export const metadata: Metadata = {
         url: "/favicon.png",
         width: 512,
         height: 512,
-        alt: "MK_Widget",
+        alt: "MK Widget Card",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "MK_Widget | Digital Card & Plugin Widget System",
+    title: "MK Widget Card | Hệ sinh thái eCard & Widget thông minh",
     description:
-      "He sinh thai eCard, QR, plugins va widget voi landing page tone den hien dai.",
+      "Hệ sinh thái eCard, mã QR thông minh và Widget với giao diện hiện đại tối ưu trải nghiệm người dùng.",
     images: ["/favicon.png"],
   },
   robots: {
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  applicationName: "MK_Widget",
+  applicationName: "MK Widget Card",
   category: "technology",
   manifest: "/manifest.webmanifest",
   icons: {
