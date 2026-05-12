@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import { setRequestLocale } from "next-intl/server";
 import { MkLandingPage } from "@/components/mk-landing-page";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mk-widget-card.vercel.app";
@@ -14,7 +14,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",

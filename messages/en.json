@@ -1,0 +1,238 @@
+{
+  "nav": {
+    "product": "Product",
+    "features": "Features",
+    "guide": "Guide",
+    "creator": "Creator",
+    "github": "GitHub",
+    "download": "Get App"
+  },
+  "hero": {
+    "badge": "MK Widget Card / Digital Identity 2026",
+    "title": "Modern eCard & Widget Ecosystem.",
+    "desc": "MK Widget Card helps you create professional digital business cards, integrate smart QR codes, and bring important information directly to your home screen through a seamless Widget system on iOS and Android.",
+    "chplay": "CH Play",
+    "appstore": "App Store",
+    "source": "GitHub Source",
+    "preview": {
+      "console": "Plugin Console",
+      "composable": "Composable card system",
+      "status": "Production UI",
+      "readiness": "Deploy readiness"
+    }
+  },
+  "metrics": {
+    "surfaces": "widget surfaces",
+    "modules": "plugin-ready modules",
+    "privacy": "privacy & local storage"
+  },
+  "highlights": {
+    "ecard": {
+      "title": "Smart eCard QR",
+      "description": "Create digital business cards and vCard-compliant contact QR codes to share professional information in an instant."
+    },
+    "widget": {
+      "title": "Widget Experience",
+      "description": "Bring your profile, QR codes, and important shortcuts directly to your home screen through a smooth Widget system."
+    },
+    "privacy": {
+      "title": "Security & Privacy",
+      "description": "Data is stored locally and securely synced via App Groups, ensuring you always own your personal information."
+    },
+    "save": {
+      "title": "Quick Contact Save",
+      "description": "Scan someone else's eCard code and save it directly to your phone contacts automatically and accurately."
+    }
+  },
+  "productSection": {
+    "title": "Comprehensive Digital Identity Solution.",
+    "description": "MK Widget Card provides a closed-loop process from profile creation and smart QR code management to instant information display on your phone's home screen."
+  },
+  "gallerySection": {
+    "eyebrow": "Gallery",
+    "title": "Intuitive and Modern App Interface.",
+    "description": "Explore the main functional screens of MK Widget Card, optimized for user experience on both iOS and Android."
+  },
+  "gallery": [
+    {
+      "title": "eCard Setup",
+      "label": "Profile Management",
+      "description": "Interface for configuring personal information, profile pictures, and social links."
+    },
+    {
+      "title": "vCard QR Code",
+      "label": "Contact Sharing",
+      "description": "Smart QR code display screen that helps save contacts instantly without manual typing."
+    },
+    {
+      "title": "Home Screen Utility",
+      "label": "iOS & Android Widgets",
+      "description": "Various Widget templates helping you access your eCard directly from the lock or home screen."
+    },
+    {
+      "title": "Scan & Save Contacts",
+      "label": "Smart Interaction",
+      "description": "Features for scanning eCard codes via camera and automatic integration into phone contacts."
+    }
+  ],
+  "modulesSection": {
+    "eyebrow": "Modules",
+    "title": "Flexible Component System.",
+    "description": "MK Widget Card is built on a modular structure, allowing you to customize your card with various types of information according to your needs."
+  },
+  "modules": [
+    {
+      "name": "Personal Profile",
+      "description": "Display your name, title, avatar, and short bio professionally."
+    },
+    {
+      "name": "Contact QR",
+      "description": "Integrated vCard QR code helps others save your contact info with just one tap."
+    },
+    {
+      "name": "Payment QR",
+      "description": "Supports VietQR, MoMo, or bank account information for convenient transactions."
+    },
+    {
+      "name": "Social Links",
+      "description": "Gather all your Website, Facebook, LinkedIn, GitHub links into a single card."
+    },
+    {
+      "name": "Widget Customization",
+      "description": "Customize Widget colors, sizes, and styles to match your home screen aesthetic."
+    },
+    {
+      "name": "Plugin System",
+      "description": "Flexible modular structure allows you to easily toggle information components on your eCard."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Project Setup",
+      "description": "Clone the repository and install necessary libraries to start development."
+    },
+    {
+      "title": "eCard Configuration",
+      "description": "Enter personal info, select plugins like Social, Payment, or Contact QR."
+    },
+    {
+      "title": "Widget Experience",
+      "description": "Add MK Widget Card into your home screen and enjoy the convenience."
+    }
+  ],
+  "guide": {
+    "eyebrow": "Guide",
+    "title": "Project Setup & Development Guide.",
+    "description": "Steps to get started with MK Widget Card, from environment setup to building the app on mobile devices.",
+    "prereqTitle": "System Prerequisites",
+    "note": "Note: The `prebuild` command will automatically configure native libraries and run `pod install` for iOS. Ensure you have the corresponding build tools installed."
+  },
+  "creator": {
+    "eyebrow": "Creator",
+    "title": "Created by Tran Minh Khoi, optimized for deep personal products.",
+    "desc": "MK Widget Card is positioned as a modern eCard/widget app: personalized, local data sync, with a clear creator story and reliable enough to accompany you in your work.",
+    "website": "Creator website"
+  },
+  "footer": {
+    "readyTitle": "Ready to experience MK Widget Card.",
+    "readyDesc": "Download the app now to start creating professional eCards and bring your personal info to your home screen today.",
+    "tagline": "MK Widget Card - Smart eCard and Widget Ecosystem. Built with a focus on user experience and privacy.",
+    "overview": "Overview",
+    "legal": "Legal",
+    "connect": "Connect",
+    "rights": "© 2026 Tran Minh Khoi. All rights reserved.",
+    "status": "Production-ready landing for MK Widget Card."
+  },
+  "privacy": {
+    "title": "Privacy Policy - MK Widget Card.",
+    "lastUpdated": "Last updated: May 12, 2026. This policy describes how the MK Widget Card app collects, uses, and protects your information.",
+    "summaryTitle": "Summary",
+    "summaryDesc": "The app prioritizes local storage. Camera and Contact permissions are only used for scanning and saving eCards. We do not collect your personal data on our servers.",
+    "backHome": "Back to Home",
+    "sections": [
+      {
+        "title": "1. General Principles",
+        "body": [
+          "MK Widget Card is designed to be privacy-first and local-first. We respect your privacy and are committed to protecting the personal data of our users.",
+          "The app operates primarily by storing data directly on your device. We do not collect sensitive data on our servers unless necessary for specific functions such as push notifications."
+        ]
+      },
+      {
+        "title": "2. Data You Provide",
+        "body": [
+          "eCard Information: Name, title, email, phone number, social networks, and links that you actively enter to create a digital business card.",
+          "QR Data: Information contained in the QR codes you create or scan through the app.",
+          "Widget Configuration: Display options you set to bring information to your home screen."
+        ]
+      },
+      {
+        "title": "3. Device Access Permissions",
+        "body": [
+          "Camera: Used to scan QR codes of business cards from other users. We do not store images or videos from the camera other than the decoded QR code content.",
+          "Contacts: Allows you to save information from scanned eCards directly to your phone's contacts. The app only writes new information and does not read or upload your existing contacts to our servers.",
+          "Notifications: Used to send important updates or reminders. We use Expo Push Tokens to identify the device receiving notifications anonymously."
+        ]
+      },
+      {
+        "title": "4. Storage and Syncing",
+        "body": [
+          "Local Storage: All your personal information and eCards are stored securely on your device's memory (Using App Groups on iOS to share data between the App and Widget).",
+          "Widget Syncing: Data is shared internally between the main app and the home screen utility (Widget) to display information quickly without opening the app."
+        ]
+      },
+      {
+        "title": "5. Third-Party Services",
+        "body": [
+          "Expo: We use Expo's infrastructure to handle push notifications.",
+          "App Store & Google Play: Downloads and payments (if any) are handled by Apple and Google platforms according to their own policies."
+        ]
+      },
+      {
+        "title": "6. Data Security",
+        "body": [
+          "We apply standard security measures to protect your data on the device. Since the data is on your machine, we encourage you to use the operating system's security features (such as FaceID, fingerprint, or device password).",
+          "We do not sell, trade, or transfer your personal data to third parties."
+        ]
+      },
+      {
+        "title": "7. Updates and Contact",
+        "body": [
+          "This policy may be updated to reflect new features of the app. Any changes will be updated on this page.",
+          "If you have any questions, please contact us via email: contact@tranminhkhoi.dev"
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service - MK Widget Card.",
+    "lastUpdated": "Last updated: May 12, 2026. These terms govern your use of our app and accompanying services.",
+    "contactTitle": "7. Contact",
+    "contactDesc": "Any questions about the terms of service, please contact us via email: ",
+    "sections": [
+      {
+        "title": "1. Acceptance of Terms",
+        "body": "By downloading, installing, or using the MK Widget Card app, you agree to comply with these terms of use. If you do not agree, please do not use the app."
+      },
+      {
+        "title": "2. Intellectual Property Rights",
+        "body": "All content, source code, design, logo, and other intellectual property assets related to MK Widget Card are owned by Tran Minh Khoi. You may not copy, modify, or distribute them without written consent."
+      },
+      {
+        "title": "3. User Content",
+        "body": "You are fully responsible for the personal information, links, and data you enter into the app to create eCards. You commit that the information provided is accurate and does not violate laws or third-party rights."
+      },
+      {
+        "title": "4. Use of Service",
+        "body": "The app is provided for the purpose of creating digital business cards and managing contact information. You may not use the app for any illegal or harmful purpose, including spamming or impersonating others."
+      },
+      {
+        "title": "5. Disclaimer",
+        "body": "The app is provided 'as is'. We do not guarantee that the app will be error-free or always available. We are not responsible for any data loss or damage arising from the use of the app."
+      },
+      {
+        "title": "6. Changes to Terms",
+        "body": "We reserve the right to update these terms at any time. Your continued use of the app after changes constitute your acceptance of the new terms."
+      }
+    ]
+  }
+}

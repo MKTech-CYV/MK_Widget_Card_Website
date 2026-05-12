@@ -1,0 +1,238 @@
+{
+  "nav": {
+    "product": "Sản phẩm",
+    "features": "Tính năng",
+    "guide": "Hướng dẫn",
+    "creator": "Creator",
+    "github": "GitHub",
+    "download": "Tải app"
+  },
+  "hero": {
+    "badge": "MK Widget Card / Digital Identity 2026",
+    "title": "Hệ sinh thái eCard & Widget hiện đại.",
+    "desc": "MK Widget Card giúp bạn tạo danh thiếp kỹ thuật số chuyên nghiệp, tích hợp mã QR thông minh và đưa thông tin quan trọng lên màn hình chính thông qua hệ thống Widget mượt mà trên iOS và Android.",
+    "chplay": "CH Play",
+    "appstore": "App Store",
+    "source": "Source GitHub",
+    "preview": {
+      "console": "Bảng điều khiển Plugin",
+      "composable": "Hệ thống thẻ linh hoạt",
+      "status": "Giao diện Production",
+      "readiness": "Sẵn sàng triển khai"
+    }
+  },
+  "metrics": {
+    "surfaces": "widget surfaces",
+    "modules": "plugin-ready modules",
+    "privacy": "quyền riêng tư & local storage"
+  },
+  "highlights": {
+    "ecard": {
+      "title": "eCard QR thông minh",
+      "description": "Tạo danh thiếp số và mã QR liên hệ chuẩn vCard để chia sẻ thông tin chuyên nghiệp chỉ trong tích tắc."
+    },
+    "widget": {
+      "title": "Trải nghiệm Widget",
+      "description": "Đưa profile, mã QR và các lối tắt quan trọng của bạn trực tiếp lên màn hình chính thông qua hệ thống Widget mượt mà."
+    },
+    "privacy": {
+      "title": "Bảo mật & Riêng tư",
+      "description": "Dữ liệu được lưu trữ cục bộ và đồng bộ an toàn qua App Groups, đảm bảo bạn luôn làm chủ thông tin cá nhân của mình."
+    },
+    "save": {
+      "title": "Lưu danh bạ nhanh",
+      "description": "Quét mã eCard của người khác và lưu trực tiếp vào danh bạ điện thoại một cách tự động và chính xác."
+    }
+  },
+  "productSection": {
+    "title": "Giải pháp định danh kỹ thuật số toàn diện.",
+    "description": "MK Widget Card cung cấp một quy trình khép kín từ việc tạo hồ sơ, quản lý mã QR thông minh đến việc hiển thị thông tin tức thì trên màn hình chính của điện thoại."
+  },
+  "gallerySection": {
+    "eyebrow": "Gallery",
+    "title": "Giao diện ứng dụng trực quan và hiện đại.",
+    "description": "Khám phá các màn hình chức năng chính của MK Widget Card, được thiết kế tối ưu cho trải nghiệm người dùng trên cả iOS và Android."
+  },
+  "gallery": [
+    {
+      "title": "Thiết lập eCard",
+      "label": "Quản lý hồ sơ",
+      "description": "Giao diện cấu hình thông tin cá nhân, ảnh đại diện và các liên kết xã hội."
+    },
+    {
+      "title": "Mã QR vCard",
+      "label": "Chia sẻ liên hệ",
+      "description": "Màn hình hiển thị mã QR thông minh giúp lưu danh bạ tức thì không cần nhập tay."
+    },
+    {
+      "title": "Tiện ích màn hình chính",
+      "label": "Widget iOS & Android",
+      "description": "Các mẫu Widget đa dạng giúp bạn truy cập eCard ngay từ màn hình khóa hoặc màn hình chính."
+    },
+    {
+      "title": "Quét & Lưu danh bạ",
+      "label": "Tương tác thông minh",
+      "description": "Tính năng quét mã eCard từ camera và tự động tích hợp vào danh bạ điện thoại."
+    }
+  ],
+  "modulesSection": {
+    "eyebrow": "Modules",
+    "title": "Hệ thống thành phần linh hoạt.",
+    "description": "MK Widget Card được xây dựng trên cấu trúc mô-đun, cho phép bạn tùy biến danh thiếp với nhiều loại thông tin khác nhau tùy theo nhu cầu sử dụng."
+  },
+  "modules": [
+    {
+      "name": "Hồ sơ cá nhân",
+      "description": "Hiển thị tên, chức vụ, ảnh đại diện và bio ngắn gọn của bạn một cách chuyên nghiệp."
+    },
+    {
+      "name": "Contact QR",
+      "description": "Mã QR vCard tích hợp giúp người đối diện lưu thông tin liên lạc của bạn chỉ với một cú chạm."
+    },
+    {
+      "name": "Thanh toán QR",
+      "description": "Hỗ trợ các loại mã VietQR, MoMo hoặc số tài khoản ngân hàng để giao dịch thuận tiện hơn."
+    },
+    {
+      "name": "Liên kết xã hội",
+      "description": "Tập hợp các đường dẫn Website, Facebook, LinkedIn, GitHub của bạn vào một danh thiếp duy nhất."
+    },
+    {
+      "name": "Giao diện Widget",
+      "description": "Tùy biến màu sắc, kích thước và kiểu dáng Widget để phù hợp với phong cách màn hình chính của bạn."
+    },
+    {
+      "name": "Hệ thống Plugin",
+      "description": "Cấu trúc mô-đun linh hoạt giúp bạn dễ dàng bật/tắt các thành phần thông tin trên eCard."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Cài đặt dự án",
+      "description": "Clone repository và cài đặt các thư viện cần thiết để bắt đầu phát triển."
+    },
+    {
+      "title": "Cấu hình eCard",
+      "description": "Nhập thông tin cá nhân, chọn các plugin như Social, Payment hoặc Contact QR."
+    },
+    {
+      "title": "Trải nghiệm Widget",
+      "description": "Thêm MK Widget Card vào màn hình chính để tận hưởng sự tiện lợi."
+    }
+  ],
+  "guide": {
+    "eyebrow": "Guide",
+    "title": "Hướng dẫn thiết lập và phát triển dự án.",
+    "description": "Các bước để bắt đầu với MK Widget Card, từ cài đặt môi trường đến việc build ứng dụng trên các thiết bị di động.",
+    "prereqTitle": "Yêu cầu hệ thống",
+    "note": "Lưu ý: Lệnh `prebuild` sẽ tự động cấu hình các thư viện native và chạy `pod install` cho iOS. Đảm bảo bạn đã cài đặt đủ các công cụ build tương ứng."
+  },
+  "creator": {
+    "eyebrow": "Nhà sáng tạo",
+    "title": "Được tạo bởi Tran Minh Khoi, tối ưu cho sản phẩm cá nhân có chiều sâu.",
+    "desc": "MK Widget Card được định vị như một ứng dụng eCard/widget hiện đại: cá nhân hóa, đồng bộ dữ liệu cục bộ, có câu chuyện creator rõ ràng và đủ độ tin cậy để đồng hành cùng bạn trong công việc.",
+    "website": "Website creator"
+  },
+  "footer": {
+    "readyTitle": "Sẵn sàng trải nghiệm MK Widget Card.",
+    "readyDesc": "Tải ngay ứng dụng để bắt đầu tạo eCard chuyên nghiệp và đưa thông tin cá nhân của bạn lên màn hình chính ngay hôm nay.",
+    "tagline": "MK Widget Card - Hệ sinh thái eCard và Widget thông minh. Được xây dựng với sự tập trung vào trải nghiệm người dùng và quyền riêng tư.",
+    "overview": "Tổng quan",
+    "legal": "Legal",
+    "connect": "Kết nối",
+    "rights": "© 2026 Tran Minh Khoi. Bảo lưu mọi quyền.",
+    "status": "Production-ready landing cho MK Widget Card."
+  },
+  "privacy": {
+    "title": "Privacy Policy - MK Widget Card.",
+    "lastUpdated": "Cập nhật lần cuối: 12 tháng 5, 2026. Chính sách này mô tả cách ứng dụng MK Widget Card thu thập, sử dụng và bảo vệ thông tin của bạn.",
+    "summaryTitle": "Tóm tắt",
+    "summaryDesc": "Ứng dụng ưu tiên lưu trữ cục bộ. Quyền Camera và Danh bạ chỉ được sử dụng cho mục đích quét và lưu eCard. Chúng tôi không thu thập dữ liệu cá nhân của bạn lên máy chủ.",
+    "backHome": "Về trang chủ",
+    "sections": [
+      {
+        "title": "1. Nguyên tắc chung",
+        "body": [
+          "MK Widget Card được thiết kế theo hướng privacy-first và local-first. Chúng tôi tôn trọng quyền riêng tư của bạn và cam kết bảo vệ dữ liệu cá nhân của người dùng.",
+          "Ứng dụng hoạt động chủ yếu bằng cách lưu trữ dữ liệu trực tiếp trên thiết bị của bạn. Chúng tôi không thu thập dữ liệu nhạy cảm trên máy chủ trừ khi cần thiết cho các chức năng cụ thể như thông báo đẩy."
+        ]
+      },
+      {
+        "title": "2. Dữ liệu bạn cung cấp",
+        "body": [
+          "Thông tin eCard: Tên, chức vụ, email, số điện thoại, mạng xã hội và các liên kết mà bạn chủ động nhập để tạo danh thiếp kỹ thuật số.",
+          "Dữ liệu QR: Thông tin chứa trong mã QR mà bạn tạo hoặc quét thông qua ứng dụng.",
+          "Cấu hình Widget: Các tùy chọn hiển thị mà bạn thiết lập để đưa thông tin lên màn hình chính."
+        ]
+      },
+      {
+        "title": "3. Quyền truy cập thiết bị",
+        "body": [
+          "Camera: Được sử dụng để quét mã QR danh thiếp từ người dùng khác. Chúng tôi không lưu trữ hình ảnh hoặc video từ camera ngoài nội dung mã QR được giải mã.",
+          "Danh bạ (Contacts): Cho phép bạn lưu trực tiếp thông tin từ eCard đã quét vào danh bạ điện thoại. Ứng dụng chỉ ghi thông tin mới và không đọc hoặc tải danh bạ hiện có của bạn lên máy chủ.",
+          "Thông báo (Notifications): Được sử dụng để gửi các cập nhật quan trọng hoặc nhắc nhở. Chúng tôi sử dụng Expo Push Tokens để định danh thiết bị nhận thông báo một cách ẩn danh."
+        ]
+      },
+      {
+        "title": "4. Lưu trữ và Đồng bộ",
+        "body": [
+          "Lưu trữ cục bộ: Tất cả thông tin cá nhân và eCard của bạn được lưu trữ an toàn trên bộ nhớ của thiết bị (Sử dụng App Groups trên iOS để chia sẻ dữ liệu giữa App và Widget).",
+          "Đồng bộ Widget: Dữ liệu được chia sẻ nội bộ giữa ứng dụng chính và tiện ích màn hình chính (Widget) để hiển thị thông tin nhanh chóng mà không cần mở ứng dụng."
+        ]
+      },
+      {
+        "title": "5. Dịch vụ bên thứ ba",
+        "body": [
+          "Expo: Chúng tôi sử dụng hạ tầng của Expo để xử lý thông báo đẩy (Push Notifications).",
+          "App Store & Google Play: Việc tải xuống và thanh toán (nếu có) được xử lý bởi nền tảng của Apple và Google theo chính sách riêng của họ."
+        ]
+      },
+      {
+        "title": "6. Bảo mật dữ liệu",
+        "body": [
+          "Chúng tôi áp dụng các biện pháp bảo mật tiêu chuẩn để bảo vệ dữ liệu của bạn trên thiết bị. Vì dữ liệu nằm trên máy của bạn, chúng tôi khuyến khích bạn sử dụng các tính năng bảo mật của hệ điều hành (như FaceID, vân tay hoặc mật khẩu thiết bị).",
+          "Chúng tôi không bán, trao đổi hoặc chuyển giao dữ liệu cá nhân của bạn cho bên thứ ba."
+        ]
+      },
+      {
+        "title": "7. Cập nhật và Liên hệ",
+        "body": [
+          "Chính sách này có thể được cập nhật để phù hợp với các tính năng mới của ứng dụng. Mọi thay đổi sẽ được cập nhật tại trang này.",
+          "Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ qua email: contact@tranminhkhoi.dev"
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service - MK Widget Card.",
+    "lastUpdated": "Cập nhật lần cuối: 12 tháng 5, 2026. Các điều khoản này quy định việc sử dụng ứng dụng và các dịch vụ đi kèm của chúng tôi.",
+    "contactTitle": "7. Liên hệ",
+    "contactDesc": "Mọi câu hỏi về điều khoản dịch vụ, vui lòng liên hệ qua email: ",
+    "sections": [
+      {
+        "title": "1. Chấp nhận điều khoản",
+        "body": "Bằng cách tải xuống, cài đặt hoặc sử dụng ứng dụng MK Widget Card, bạn đồng ý tuân thủ các điều khoản sử dụng này. Nếu bạn không đồng ý, vui lòng không sử dụng ứng dụng."
+      },
+      {
+        "title": "2. Quyền sở hữu trí tuệ",
+        "body": "Tất cả nội dung, mã nguồn, thiết kế, logo và các tài sản trí tuệ khác liên quan đến MK Widget Card thuộc sở hữu của Trần Minh Khôi. Bạn không được sao chép, sửa đổi hoặc phân phối mà không có sự đồng ý bằng văn bản."
+      },
+      {
+        "title": "3. Nội dung người dùng",
+        "body": "Bạn chịu trách nhiệm hoàn toàn về các thông tin cá nhân, liên kết và dữ liệu bạn nhập vào ứng dụng để tạo eCard. Bạn cam kết thông tin cung cấp là chính xác và không vi phạm pháp luật hoặc quyền của bên thứ ba."
+      },
+      {
+        "title": "4. Sử dụng dịch vụ",
+        "body": "Ứng dụng được cung cấp nhằm mục đích tạo danh thiếp kỹ thuật số và quản lý thông tin liên lạc. Bạn không được sử dụng ứng dụng cho bất kỳ mục đích bất hợp pháp hoặc gây hại nào, bao gồm việc spam hoặc giả mạo người khác."
+      },
+      {
+        "title": "5. Miễn trừ trách nhiệm",
+        "body": "Ứng dụng được cung cấp 'như hiện có'. Chúng tôi không đảm bảo ứng dụng sẽ không có lỗi hoặc luôn sẵn dụng. Chúng tôi không chịu trách nhiệm cho bất kỳ tổn thất dữ liệu hoặc thiệt hại nào phát sinh từ việc sử dụng ứng dụng."
+      },
+      {
+        "title": "6. Thay đổi điều khoản",
+        "body": "Chúng tôi có quyền cập nhật các điều khoản này bất cứ lúc nào. Việc bạn tiếp tục sử dụng ứng dụng sau khi có thay đổi đồng nghĩa với việc bạn chấp nhận các điều khoản mới."
+      }
+    ]
+  }
+}
