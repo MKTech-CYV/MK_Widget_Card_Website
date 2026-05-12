@@ -374,42 +374,72 @@ function PluginCard({
   );
 }
 
-function GalleryCard({
+function GalleryItem({
   item,
   index,
 }: {
   item: (typeof gallery)[number];
   index: number;
 }) {
+  const isEven = index % 2 === 0;
+
   return (
-    <Reveal delay={index * 0.05}>
-      <div className="group overflow-hidden rounded-[8px] border border-white/10 bg-white/[0.025]">
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#050505]">
-          {item.image ? (
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              className="object-cover opacity-50 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
-            />
-          ) : (
-            <div className="absolute inset-0 mk-grid-fade opacity-70" />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
-          
-          <div className="absolute inset-x-6 top-6 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-zinc-400">
-            <span>{item.label}</span>
-            <span>MK_{String(index + 1).padStart(2, "0")}</span>
+    <Reveal delay={index * 0.1}>
+      <div className="group relative grid gap-8 lg:grid-cols-2 lg:items-center">
+        {/* Nội dung text - Sẽ đảo vị trí dựa trên index trên desktop */}
+        <div className={cn("order-2 lg:p-8", isEven ? "lg:order-2" : "lg:order-1")}>
+          <div className="mb-5 inline-flex items-center gap-3">
+            <span className="font-mono text-xs font-medium tracking-[0.2em] text-cyan-300/60">
+              MK_{String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="h-px w-8 bg-white/10" />
+            <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+              {item.label}
+            </span>
           </div>
-          
-          <div className="absolute inset-x-6 bottom-6 rounded-[8px] border border-white/10 bg-black/70 p-4 backdrop-blur-md">
-            {!item.image && (
-              <div className="mb-8 h-24 rounded-[6px] border border-dashed border-white/15 bg-white/[0.03] mk-scan-line" />
-            )}
-            <p className="text-sm font-medium text-white">{item.title}</p>
-            <p className="mt-1 text-xs leading-5 text-zinc-500">
-              {item.description}
-            </p>
+          <h3 className="text-2xl font-semibold text-white sm:text-3xl">
+            {item.title}
+          </h3>
+          <p className="mt-5 text-base leading-8 text-zinc-400 sm:text-lg">
+            {item.description}
+          </p>
+          <div className="mt-8 flex items-center gap-4">
+            <div className="size-1.5 rounded-full bg-cyan-300" />
+            <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+          </div>
+        </div>
+
+        {/* Khung chứa ảnh - Hiển thị toàn bộ screenshot */}
+        <div className={cn("order-1 lg:order-none", isEven ? "lg:order-1" : "lg:order-2")}>
+          <div className="relative mx-auto max-w-[320px] lg:max-w-none">
+            {/* Hiệu ứng Glow phía sau ảnh */}
+            <div className="absolute -inset-4 bg-cyan-300/5 blur-3xl opacity-0 transition duration-500 group-hover:opacity-100" />
+            
+            <div className="relative overflow-hidden rounded-[12px] border border-white/10 bg-white/[0.02] p-2 transition duration-500 group-hover:border-white/20">
+              <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[8px] bg-[#050505]">
+                {item.image ? (
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-contain transition duration-700 group-hover:scale-[1.02]"
+                    priority={index === 0}
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute inset-0 mk-grid-fade opacity-40" />
+                    <div className="text-center">
+                      <div className="mb-4 mx-auto size-12 rounded-full border border-dashed border-white/20 flex items-center justify-center">
+                        <Smartphone className="size-6 text-zinc-700" />
+                      </div>
+                      <p className="text-[10px] uppercase tracking-widest text-zinc-600">Placeholder</p>
+                    </div>
+                  </div>
+                )}
+                {/* Lớp phủ gradient nhẹ phía dưới ảnh */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.4),transparent_40%)]" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -902,9 +932,9 @@ export function MkLandingPage() {
                 description="Khám phá các màn hình chức năng chính của MK Widget Card, được thiết kế tối ưu cho trải nghiệm người dùng trên cả iOS và Android."
               />
 
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="mt-24 space-y-24 sm:space-y-32 lg:space-y-48">
                 {gallery.map((item, index) => (
-                  <GalleryCard key={item.title} item={item} index={index} />
+                  <GalleryItem key={item.title} item={item} index={index} />
                 ))}
               </div>
             </div>
