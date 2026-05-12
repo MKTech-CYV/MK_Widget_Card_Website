@@ -1,9 +1,20 @@
 {
+  "metadata": {
+    "title": {
+      "default": "MK Widget Card | Hệ sinh thái eCard & Widget thông minh",
+      "template": "%s | MK Widget Card"
+    },
+    "description": "MK Widget Card là hệ sinh thái danh thiếp kỹ thuật số (eCard), mã QR vCard và tiện ích màn hình chính (Widget) cho iOS và Android.",
+    "og": {
+      "title": "MK Widget Card | Hệ sinh thái eCard & Widget thông minh",
+      "description": "Landing page giới thiệu MK Widget Card: eCard, mã QR thông minh, Widget và hướng dẫn thiết lập cho iOS & Android."
+    }
+  },
   "nav": {
     "product": "Sản phẩm",
     "features": "Tính năng",
     "guide": "Hướng dẫn",
-    "creator": "Creator",
+    "creator": "Nhà sáng tạo",
     "github": "GitHub",
     "download": "Tải app"
   },
@@ -18,13 +29,16 @@
       "console": "Bảng điều khiển Plugin",
       "composable": "Hệ thống thẻ linh hoạt",
       "status": "Giao diện Production",
-      "readiness": "Sẵn sàng triển khai"
+      "readiness": "Sẵn sàng triển khai",
+      "live": "Xem trước trực tiếp",
+      "ready": "Sẵn sàng",
+      "links": ["GitHub", "Website", "Email", "VietQR"]
     }
   },
   "metrics": {
-    "surfaces": "widget surfaces",
-    "modules": "plugin-ready modules",
-    "privacy": "quyền riêng tư & local storage"
+    "surfaces": "bề mặt Widget",
+    "modules": "mô-đun sẵn sàng plugin",
+    "privacy": "quyền riêng tư & lưu trữ cục bộ"
   },
   "highlights": {
     "ecard": {
@@ -49,7 +63,7 @@
     "description": "MK Widget Card cung cấp một quy trình khép kín từ việc tạo hồ sơ, quản lý mã QR thông minh đến việc hiển thị thông tin tức thì trên màn hình chính của điện thoại."
   },
   "gallerySection": {
-    "eyebrow": "Gallery",
+    "eyebrow": "Thư viện",
     "title": "Giao diện ứng dụng trực quan và hiện đại.",
     "description": "Khám phá các màn hình chức năng chính của MK Widget Card, được thiết kế tối ưu cho trải nghiệm người dùng trên cả iOS và Android."
   },
@@ -76,7 +90,7 @@
     }
   ],
   "modulesSection": {
-    "eyebrow": "Modules",
+    "eyebrow": "Mô-đun",
     "title": "Hệ thống thành phần linh hoạt.",
     "description": "MK Widget Card được xây dựng trên cấu trúc mô-đun, cho phép bạn tùy biến danh thiếp với nhiều loại thông tin khác nhau tùy theo nhu cầu sử dụng."
   },
@@ -120,31 +134,82 @@
       "description": "Thêm MK Widget Card vào màn hình chính để tận hưởng sự tiện lợi."
     }
   ],
+  "workflow": {
+    "stepLabel": "Bước"
+  },
   "guide": {
-    "eyebrow": "Guide",
+    "eyebrow": "Hướng dẫn",
     "title": "Hướng dẫn thiết lập và phát triển dự án.",
     "description": "Các bước để bắt đầu với MK Widget Card, từ cài đặt môi trường đến việc build ứng dụng trên các thiết bị di động.",
     "prereqTitle": "Yêu cầu hệ thống",
+    "prerequisites": [
+      {
+        "item": "Node.js",
+        "desc": "Phiên bản 18 trở lên."
+      },
+      {
+        "item": "Git",
+        "desc": "Dùng để clone mã nguồn từ GitHub."
+      },
+      {
+        "item": "CocoaPods",
+        "desc": "Bắt buộc khi build iOS trên macOS."
+      },
+      {
+        "item": "Android SDK",
+        "desc": "Bắt buộc khi build Android."
+      }
+    ],
+    "commands": {
+      "clone": "1. Clone & cài đặt",
+      "ios": "2. Build cho iOS (Yêu cầu macOS)",
+      "android": "3. Build cho Android"
+    },
+    "copyCommand": "Sao chép",
     "note": "Lưu ý: Lệnh `prebuild` sẽ tự động cấu hình các thư viện native và chạy `pod install` cho iOS. Đảm bảo bạn đã cài đặt đủ các công cụ build tương ứng."
   },
   "creator": {
     "eyebrow": "Nhà sáng tạo",
     "title": "Được tạo bởi Tran Minh Khoi, tối ưu cho sản phẩm cá nhân có chiều sâu.",
     "desc": "MK Widget Card được định vị như một ứng dụng eCard/widget hiện đại: cá nhân hóa, đồng bộ dữ liệu cục bộ, có câu chuyện creator rõ ràng và đủ độ tin cậy để đồng hành cùng bạn trong công việc.",
-    "website": "Website creator"
+    "website": "Website nhà sáng tạo",
+    "twitter": "X / Twitter",
+    "details": [
+      {
+        "label": "Vai trò",
+        "value": "Nhà sáng tạo"
+      },
+      {
+        "label": "Trọng tâm",
+        "value": "Định danh số"
+      },
+      {
+        "label": "Stack",
+        "value": "React Native"
+      },
+      {
+        "label": "Trạng thái",
+        "value": "Đang phát hành"
+      }
+    ]
   },
   "footer": {
     "readyTitle": "Sẵn sàng trải nghiệm MK Widget Card.",
     "readyDesc": "Tải ngay ứng dụng để bắt đầu tạo eCard chuyên nghiệp và đưa thông tin cá nhân của bạn lên màn hình chính ngay hôm nay.",
     "tagline": "MK Widget Card - Hệ sinh thái eCard và Widget thông minh. Được xây dựng với sự tập trung vào trải nghiệm người dùng và quyền riêng tư.",
     "overview": "Tổng quan",
-    "legal": "Legal",
+    "legal": "Pháp lý",
+    "privacy": "Quyền riêng tư",
+    "terms": "Điều khoản",
     "connect": "Kết nối",
     "rights": "© 2026 Tran Minh Khoi. Bảo lưu mọi quyền.",
-    "status": "Production-ready landing cho MK Widget Card."
+    "status": "Landing page sẵn sàng production cho MK Widget Card."
   },
   "privacy": {
-    "title": "Privacy Policy - MK Widget Card.",
+    "metaTitle": "Chính sách quyền riêng tư",
+    "metaDescription": "Chính sách quyền riêng tư của MK Widget Card, bao gồm dữ liệu eCard cục bộ, quét QR, quyền thiết bị và đồng bộ Widget.",
+    "label": "Chính sách quyền riêng tư",
+    "title": "Chính sách quyền riêng tư - MK Widget Card.",
     "lastUpdated": "Cập nhật lần cuối: 12 tháng 5, 2026. Chính sách này mô tả cách ứng dụng MK Widget Card thu thập, sử dụng và bảo vệ thông tin của bạn.",
     "summaryTitle": "Tóm tắt",
     "summaryDesc": "Ứng dụng ưu tiên lưu trữ cục bộ. Quyền Camera và Danh bạ chỉ được sử dụng cho mục đích quét và lưu eCard. Chúng tôi không thu thập dữ liệu cá nhân của bạn lên máy chủ.",
@@ -204,7 +269,10 @@
     ]
   },
   "terms": {
-    "title": "Terms of Service - MK Widget Card.",
+    "metaTitle": "Điều khoản dịch vụ",
+    "metaDescription": "Điều khoản dịch vụ của MK Widget Card, bao gồm cách sử dụng ứng dụng, nội dung người dùng, sở hữu trí tuệ và giới hạn dịch vụ.",
+    "label": "Điều khoản",
+    "title": "Điều khoản dịch vụ - MK Widget Card.",
     "lastUpdated": "Cập nhật lần cuối: 12 tháng 5, 2026. Các điều khoản này quy định việc sử dụng ứng dụng và các dịch vụ đi kèm của chúng tôi.",
     "contactTitle": "7. Liên hệ",
     "contactDesc": "Mọi câu hỏi về điều khoản dịch vụ, vui lòng liên hệ qua email: ",
@@ -234,5 +302,10 @@
         "body": "Chúng tôi có quyền cập nhật các điều khoản này bất cứ lúc nào. Việc bạn tiếp tục sử dụng ứng dụng sau khi có thay đổi đồng nghĩa với việc bạn chấp nhận các điều khoản mới."
       }
     ]
+  },
+  "notFound": {
+    "title": "Trang này chưa khả dụng.",
+    "description": "Đường dẫn bạn mở không tồn tại trong landing page MK Widget Card hiện tại.",
+    "backHome": "Về trang chủ"
   }
 }

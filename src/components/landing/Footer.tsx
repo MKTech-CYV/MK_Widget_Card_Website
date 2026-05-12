@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import { GITHUB_URL, CREATOR_URL, CONTACT_EMAIL } from "./constants";
+import { GITHUB_URL, CREATOR_URL, CONTACT_EMAIL, TWITTER_URL } from "./constants";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -50,13 +50,13 @@ export function Footer() {
               href="/privacy"
               className="block text-zinc-500 hover:text-white"
             >
-              Privacy Policy
+              {t("privacy")}
             </Link>
             <Link
               href="/terms"
               className="block text-zinc-500 hover:text-white"
             >
-              Terms
+              {t("terms")}
             </Link>
           </div>
           <div className="space-y-3">
@@ -76,6 +76,14 @@ export function Footer() {
               className="block text-zinc-500 hover:text-white"
             >
               Creator
+            </Link>
+            <Link
+              href={TWITTER_URL}
+              target="_blank"
+              rel="me noreferrer"
+              className="block text-zinc-500 hover:text-white"
+            >
+              X / Twitter
             </Link>
             <Link
               href={`mailto:${CONTACT_EMAIL}`}

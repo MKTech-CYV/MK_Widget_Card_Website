@@ -5,11 +5,13 @@ export function CodeBlock({
   title,
   command,
   copied,
+  copyLabel = "Copy",
   onCopy,
 }: {
   title: string;
   command: string;
   copied: boolean;
+  copyLabel?: string;
   onCopy: () => void;
 }) {
   return (
@@ -20,7 +22,7 @@ export function CodeBlock({
           {title}
         </div>
         <Button
-          aria-label={`Copy ${title}`}
+          aria-label={`${copyLabel} ${title}`}
           variant="ghost"
           size="icon-sm"
           className="text-zinc-500 hover:text-white"

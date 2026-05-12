@@ -1,20 +1,18 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Globe2, ExternalLink } from "lucide-react";
+import { AtSign, Globe2, Mail } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "./ui/Reveal";
 import { ActionLink } from "./ui/ActionLink";
-import { CREATOR_URL, CONTACT_EMAIL } from "./constants";
+import { CREATOR_URL, CONTACT_EMAIL, TWITTER_URL } from "./constants";
 
 export function CreatorSection() {
   const t = useTranslations("creator");
   
-  const creatorDetails = [
-    ["Role", "Creator"],
-    ["Focus", "Digital Identity"],
-    ["Stack", "React Native"],
-    ["Status", "Shipping"],
-  ];
+  const creatorDetails = [0, 1, 2, 3].map((index) => ({
+    label: t(`details.${index}.label`),
+    value: t(`details.${index}.value`),
+  }));
 
   return (
     <section
@@ -46,8 +44,12 @@ export function CreatorSection() {
               <Globe2 className="size-4" />
               {t("website")}
             </ActionLink>
+            <ActionLink href={TWITTER_URL} variant="ghost" external className="w-full sm:w-auto">
+              <AtSign className="size-4" />
+              {t("twitter")}
+            </ActionLink>
             <ActionLink href={`mailto:${CONTACT_EMAIL}`} variant="ghost" className="w-full sm:w-auto">
-              <ExternalLink className="size-4" />
+              <Mail className="size-4" />
               {CONTACT_EMAIL}
             </ActionLink>
           </Reveal>
@@ -66,7 +68,7 @@ export function CreatorSection() {
                 />
               </div>
               <div className="mt-4 grid grid-cols-2 gap-3">
-                {creatorDetails.map(([label, value]) => (
+                {creatorDetails.map(({ label, value }) => (
                   <div
                     key={label}
                     className="rounded-[8px] border border-white/10 bg-white/[0.025] p-4"

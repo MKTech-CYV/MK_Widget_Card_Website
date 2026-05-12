@@ -22,7 +22,7 @@ export function GalleryItem({
   return (
     <Reveal delay={index * 0.1}>
       <div className="group relative grid gap-8 lg:grid-cols-2 lg:items-center">
-        {/* Nội dung text - Sẽ đảo vị trí dựa trên index trên desktop */}
+        {/* Text content swaps position by index on desktop. */}
         <div className={cn("order-2 lg:p-8", isEven ? "lg:order-2" : "lg:order-1")}>
           <div className="mb-5 inline-flex items-center gap-3">
             <span className="font-mono text-xs font-medium tracking-[0.2em] text-cyan-300/60">
@@ -45,10 +45,10 @@ export function GalleryItem({
           </div>
         </div>
 
-        {/* Khung chứa ảnh - Hiển thị trực tiếp mockup */}
+        {/* Mockup image frame. */}
         <div className={cn("order-1 lg:order-none", isEven ? "lg:order-1" : "lg:order-2")}>
           <div className="relative mx-auto max-w-[320px] lg:max-w-none">
-            {/* Hiệu ứng Glow phía sau ảnh */}
+            {/* Soft glow behind the image. */}
             <div className="absolute -inset-10 bg-cyan-300/[0.07] blur-[100px] opacity-0 transition duration-700 group-hover:opacity-100" />
             
             <div className="relative w-full transition duration-500 group-hover:scale-[1.02]">

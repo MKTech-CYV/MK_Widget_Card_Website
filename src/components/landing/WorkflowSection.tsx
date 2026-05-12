@@ -4,6 +4,7 @@ import { Reveal } from "./ui/Reveal";
 
 export function WorkflowSection() {
   const t = useTranslations("steps");
+  const tw = useTranslations("workflow");
   
   const steps = [
     { icon: GitBranch, title: t("0.title"), description: t("0.description") },
@@ -23,7 +24,7 @@ export function WorkflowSection() {
                     <step.icon className="size-5" />
                   </div>
                   <span className="font-mono text-xs text-zinc-600">
-                    STEP {index + 1}
+                    {tw("stepLabel")} {index + 1}
                   </span>
                 </div>
                 <h3 className="text-xl font-medium text-white">

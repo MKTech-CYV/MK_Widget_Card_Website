@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { ActionLink } from "./ui/ActionLink";
 import { GITHUB_URL, GOOGLE_PLAY_URL, APP_STORE_URL } from "./constants";
 import { cn } from "@/lib/utils";
-import { BadgeCheck, CreditCard, Globe2, Palette, Blocks, QrCode } from "lucide-react";
+import { BadgeCheck, CreditCard, Globe2, QrCode } from "lucide-react";
 
 function HeroPreview({ reduceMotion }: { reduceMotion: boolean }) {
   const t = useTranslations("hero");
@@ -20,6 +20,7 @@ function HeroPreview({ reduceMotion }: { reduceMotion: boolean }) {
     { icon: CreditCard, accent: "text-amber-300", name: tm("2.name"), description: tm("2.description") },
     { icon: Globe2, accent: "text-sky-300", name: tm("3.name"), description: tm("3.description") },
   ];
+  const quickLinks = [0, 1, 2, 3].map((index) => t(`preview.links.${index}`));
 
   return (
     <motion.div
@@ -39,7 +40,7 @@ function HeroPreview({ reduceMotion }: { reduceMotion: boolean }) {
                 <span className="size-2 rounded-full bg-emerald-300" />
               </div>
               <span className="font-mono text-xs text-zinc-600">
-                LIVE PREVIEW
+                {t("preview.live")}
               </span>
             </div>
             <div className="mx-auto max-w-[280px] rounded-[32px] border border-white/15 bg-black p-3 shadow-2xl shadow-cyan-950/20">
@@ -63,7 +64,7 @@ function HeroPreview({ reduceMotion }: { reduceMotion: boolean }) {
                   <div className="mt-8 rounded-[8px] border border-white/10 bg-white/[0.035] p-4">
                     <div className="mb-4 flex items-center justify-between">
                       <span className="text-xs text-zinc-500">eCard QR</span>
-                      <span className="text-xs text-emerald-300">Ready</span>
+                      <span className="text-xs text-emerald-300">{t("preview.ready")}</span>
                     </div>
                     <div className="grid aspect-square grid-cols-5 gap-1 rounded-[6px] bg-white p-2">
                       {Array.from({ length: 25 }).map((_, index) => (
@@ -80,7 +81,7 @@ function HeroPreview({ reduceMotion }: { reduceMotion: boolean }) {
                     </div>
                   </div>
                   <div className="mt-auto grid grid-cols-2 gap-3">
-                    {["GitHub", "Website", "Email", "VietQR"].map((item) => (
+                    {quickLinks.map((item) => (
                       <div
                         key={item}
                         className="rounded-[8px] border border-white/10 bg-black/60 p-3 text-xs text-zinc-400"

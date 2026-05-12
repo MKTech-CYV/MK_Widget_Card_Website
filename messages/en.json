@@ -1,4 +1,15 @@
 {
+  "metadata": {
+    "title": {
+      "default": "MK Widget Card | Modern eCard & Widget Ecosystem",
+      "template": "%s | MK Widget Card"
+    },
+    "description": "MK Widget Card is a digital business card (eCard), smart QR code, and home screen widget ecosystem for iOS and Android.",
+    "og": {
+      "title": "MK Widget Card | Digital Identity 2026",
+      "description": "Create professional digital cards, integrate smart QR codes, and bring important info to your home screen with MK Widget Card."
+    }
+  },
   "nav": {
     "product": "Product",
     "features": "Features",
@@ -18,7 +29,10 @@
       "console": "Plugin Console",
       "composable": "Composable card system",
       "status": "Production UI",
-      "readiness": "Deploy readiness"
+      "readiness": "Deploy readiness",
+      "live": "Live preview",
+      "ready": "Ready",
+      "links": ["GitHub", "Website", "Email", "VietQR"]
     }
   },
   "metrics": {
@@ -120,18 +134,64 @@
       "description": "Add MK Widget Card into your home screen and enjoy the convenience."
     }
   ],
+  "workflow": {
+    "stepLabel": "Step"
+  },
   "guide": {
     "eyebrow": "Guide",
     "title": "Project Setup & Development Guide.",
     "description": "Steps to get started with MK Widget Card, from environment setup to building the app on mobile devices.",
     "prereqTitle": "System Prerequisites",
+    "prerequisites": [
+      {
+        "item": "Node.js",
+        "desc": "Version 18 or higher."
+      },
+      {
+        "item": "Git",
+        "desc": "Required to clone the source code from GitHub."
+      },
+      {
+        "item": "CocoaPods",
+        "desc": "Required for iOS builds on macOS."
+      },
+      {
+        "item": "Android SDK",
+        "desc": "Required for Android builds."
+      }
+    ],
+    "commands": {
+      "clone": "1. Clone & install",
+      "ios": "2. Build for iOS (macOS required)",
+      "android": "3. Build for Android"
+    },
+    "copyCommand": "Copy",
     "note": "Note: The `prebuild` command will automatically configure native libraries and run `pod install` for iOS. Ensure you have the corresponding build tools installed."
   },
   "creator": {
     "eyebrow": "Creator",
     "title": "Created by Tran Minh Khoi, optimized for deep personal products.",
     "desc": "MK Widget Card is positioned as a modern eCard/widget app: personalized, local data sync, with a clear creator story and reliable enough to accompany you in your work.",
-    "website": "Creator website"
+    "website": "Creator website",
+    "twitter": "X / Twitter",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Creator"
+      },
+      {
+        "label": "Focus",
+        "value": "Digital Identity"
+      },
+      {
+        "label": "Stack",
+        "value": "React Native"
+      },
+      {
+        "label": "Status",
+        "value": "Shipping"
+      }
+    ]
   },
   "footer": {
     "readyTitle": "Ready to experience MK Widget Card.",
@@ -139,11 +199,16 @@
     "tagline": "MK Widget Card - Smart eCard and Widget Ecosystem. Built with a focus on user experience and privacy.",
     "overview": "Overview",
     "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
     "connect": "Connect",
     "rights": "© 2026 Tran Minh Khoi. All rights reserved.",
     "status": "Production-ready landing for MK Widget Card."
   },
   "privacy": {
+    "metaTitle": "Privacy Policy",
+    "metaDescription": "Privacy policy for MK Widget Card, covering local eCard data, QR scanning, device permissions and Widget sync.",
+    "label": "Privacy Policy",
     "title": "Privacy Policy - MK Widget Card.",
     "lastUpdated": "Last updated: May 12, 2026. This policy describes how the MK Widget Card app collects, uses, and protects your information.",
     "summaryTitle": "Summary",
@@ -204,6 +269,9 @@
     ]
   },
   "terms": {
+    "metaTitle": "Terms of Service",
+    "metaDescription": "Terms of service for MK Widget Card, including app use, user content, intellectual property and service limitations.",
+    "label": "Terms",
     "title": "Terms of Service - MK Widget Card.",
     "lastUpdated": "Last updated: May 12, 2026. These terms govern your use of our app and accompanying services.",
     "contactTitle": "7. Contact",
@@ -234,5 +302,10 @@
         "body": "We reserve the right to update these terms at any time. Your continued use of the app after changes constitute your acceptance of the new terms."
       }
     ]
+  },
+  "notFound": {
+    "title": "This page is not available.",
+    "description": "The path you opened does not exist in the current MK Widget Card landing page.",
+    "backHome": "Back to Home"
   }
 }

@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
+import { SITE_NAME } from "@/lib/seo";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "MK_Widget",
-    short_name: "MK_Widget",
+    name: SITE_NAME,
+    short_name: "MK Widget",
     description:
-      "Digital card, QR, plugin and widget system for modern personal identity sharing.",
-    start_url: "/",
+      "Digital business card, smart QR code and home screen widget ecosystem for iOS and Android.",
+    start_url: "/vi",
     display: "standalone",
     background_color: "#000000",
     theme_color: "#000000",
