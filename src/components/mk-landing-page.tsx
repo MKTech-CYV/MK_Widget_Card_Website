@@ -257,7 +257,9 @@ function SectionHeading({
     <Reveal
       className={cn(
         "mx-auto mb-12 max-w-3xl",
-        align === "center" ? "text-center" : "mx-0 text-left",
+        align === "center" 
+          ? "text-center" 
+          : "text-center lg:mx-0 lg:text-left",
       )}
     >
       <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">
@@ -987,7 +989,7 @@ export function MkLandingPage() {
 
           <section id="guide" className="px-4 py-24 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
-              <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+              <div className="grid gap-16 lg:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
                 <div>
                   <SectionHeading
                     eyebrow="Guide"
@@ -996,13 +998,13 @@ export function MkLandingPage() {
                     align="left"
                   />
 
-                  <Reveal>
+                  <Reveal className="text-center lg:text-left">
                     <h3 className="mb-6 text-xl font-medium text-white">Yêu cầu hệ thống</h3>
-                    <div className="space-y-3">
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
                       {prerequisites.map((req, index) => (
                         <div
                           key={req.item}
-                          className="flex gap-4 rounded-[8px] border border-white/10 bg-white/[0.025] p-4"
+                          className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 rounded-[8px] border border-white/10 bg-white/[0.025] p-4"
                         >
                           <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-cyan-300 text-xs font-semibold text-black">
                             {index + 1}
@@ -1052,34 +1054,40 @@ export function MkLandingPage() {
             id="creator"
             className="border-y border-white/10 bg-[#050505] px-4 py-24 sm:px-6 lg:px-8"
           >
-            <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center">
-              <Reveal>
-                <Badge
-                  variant="outline"
-                  className="border-white/10 bg-white/[0.03] text-zinc-400"
-                >
-                  Nhà sáng tạo
-                </Badge>
-                <h2 className="mt-5 text-balance text-4xl font-semibold tracking-normal text-white sm:text-6xl">
-                  Được tạo bởi Tran Minh Khoi, tối ưu cho sản phẩm cá nhân có
-                  chiều sâu.
-                </h2>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
-                  MK Widget Card được định vị như một ứng dụng eCard/widget hiện đại: cá
-                  nhân hóa, đồng bộ dữ liệu cục bộ, có câu chuyện creator rõ ràng
-                  và đủ độ tin cậy để đồng hành cùng bạn trong công việc.
-                </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <ActionLink href={CREATOR_URL} variant="secondary" external>
+            <div className="mx-auto grid max-w-7xl gap-16 lg:gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+              <div className="text-center lg:text-left">
+                <Reveal delay={0.05} className="flex justify-center lg:justify-start">
+                  <Badge
+                    variant="outline"
+                    className="border-white/10 bg-white/[0.03] text-zinc-400"
+                  >
+                    Nhà sáng tạo
+                  </Badge>
+                </Reveal>
+                <Reveal delay={0.1}>
+                  <h2 className="mt-5 text-balance text-4xl font-semibold tracking-normal text-white sm:text-6xl">
+                    Được tạo bởi Tran Minh Khoi, tối ưu cho sản phẩm cá nhân có
+                    chiều sâu.
+                  </h2>
+                </Reveal>
+                <Reveal delay={0.15}>
+                  <p className="mt-6 mx-auto lg:mx-0 max-w-2xl text-lg leading-8 text-zinc-400">
+                    MK Widget Card được định vị như một ứng dụng eCard/widget hiện đại: cá
+                    nhân hóa, đồng bộ dữ liệu cục bộ, có câu chuyện creator rõ ràng
+                    và đủ độ tin cậy để đồng hành cùng bạn trong công việc.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.2} className="mt-8 flex flex-col items-center lg:items-start gap-3 sm:flex-row sm:justify-center lg:justify-start">
+                  <ActionLink href={CREATOR_URL} variant="secondary" external className="w-full sm:w-auto">
                     <Globe2 className="size-4" />
                     Website creator
                   </ActionLink>
-                  <ActionLink href={`mailto:${CONTACT_EMAIL}`} variant="ghost">
+                  <ActionLink href={`mailto:${CONTACT_EMAIL}`} variant="ghost" className="w-full sm:w-auto">
                     <ExternalLink className="size-4" />
                     {CONTACT_EMAIL}
                   </ActionLink>
-                </div>
-              </Reveal>
+                </Reveal>
+              </div>
 
               <Reveal delay={0.1}>
                 <div className="relative overflow-hidden rounded-[8px] border border-white/10 bg-black p-6">
