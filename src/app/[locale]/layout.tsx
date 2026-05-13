@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import type { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { Analytics } from "@vercel/analytics/next";
 import {
   type AppLocale,
   CREATOR_NAME,
@@ -129,6 +130,7 @@ export default async function RootLayout({
           {children}
         </NextIntlClientProvider>
         <GoogleAnalytics />
+        <Analytics />
       </body>
     </html>
   );
