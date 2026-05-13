@@ -212,7 +212,7 @@
     "title": "Privacy Policy - MK Widget Card.",
     "lastUpdated": "Last updated: May 12, 2026. This policy describes how the MK Widget Card app collects, uses, and protects your information.",
     "summaryTitle": "Summary",
-    "summaryDesc": "The app prioritizes local storage. Camera and Contact permissions are only used for scanning and saving eCards. We do not collect your personal data on our servers.",
+    "summaryDesc": "The app prioritizes local storage. Camera and Contact permissions are only used for scanning and saving eCards. We do not collect your personal eCard data on our servers; the website may use Google Analytics for aggregated usage measurement.",
     "backHome": "Back to Home",
     "sections": [
       {
@@ -249,6 +249,7 @@
         "title": "5. Third-Party Services",
         "body": [
           "Expo: We use Expo's infrastructure to handle push notifications.",
+          "Google Analytics: The website uses Google Analytics to understand aggregated visits, page views, device/browser information, and traffic sources. Google may process this data according to its own policies.",
           "App Store & Google Play: Downloads and payments (if any) are handled by Apple and Google platforms according to their own policies."
         ]
       },

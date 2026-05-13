@@ -3,6 +3,7 @@ import { getMessages, setRequestLocale, getTranslations } from "next-intl/server
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import type { Metadata, Viewport } from "next";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import {
   type AppLocale,
   CREATOR_NAME,
@@ -127,6 +128,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );

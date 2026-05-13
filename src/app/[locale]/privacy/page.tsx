@@ -60,6 +60,7 @@ export default async function PrivacyPolicy({
   const t = await getTranslations("privacy");
 
   const sectionsKeys = [0, 1, 2, 3, 4, 5, 6];
+  const sectionBodyCounts = [2, 2, 3, 2, 3, 2, 2];
 
   return (
     <main className="min-h-screen bg-black text-zinc-100">
@@ -111,17 +112,14 @@ export default async function PrivacyPolicy({
                 <section key={key} className="rounded-[8px] border border-white/10 bg-white/[0.025] p-5 sm:p-6">
                   <h2 className="text-xl font-medium text-white">{t(`sections.${key}.title`)}</h2>
                   <div className="mt-4 space-y-3">
-                    <p className="text-sm leading-7 text-zinc-400 sm:text-base whitespace-pre-line">
-                      {t(`sections.${key}.body.0`)}
-                    </p>
-                    <p className="text-sm leading-7 text-zinc-400 sm:text-base whitespace-pre-line">
-                      {t(`sections.${key}.body.1`)}
-                    </p>
-                    {key === 2 && (
-                      <p className="text-sm leading-7 text-zinc-400 sm:text-base whitespace-pre-line">
-                        {t(`sections.${key}.body.2`)}
+                    {Array.from({ length: sectionBodyCounts[key] }).map((_, bodyIndex) => (
+                      <p
+                        key={bodyIndex}
+                        className="text-sm leading-7 text-zinc-400 sm:text-base whitespace-pre-line"
+                      >
+                        {t(`sections.${key}.body.${bodyIndex}`)}
                       </p>
-                    )}
+                    ))}
                   </div>
                 </section>
               ))}

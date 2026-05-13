@@ -212,7 +212,7 @@
     "title": "Chính sách quyền riêng tư - MK Widget Card.",
     "lastUpdated": "Cập nhật lần cuối: 12 tháng 5, 2026. Chính sách này mô tả cách ứng dụng MK Widget Card thu thập, sử dụng và bảo vệ thông tin của bạn.",
     "summaryTitle": "Tóm tắt",
-    "summaryDesc": "Ứng dụng ưu tiên lưu trữ cục bộ. Quyền Camera và Danh bạ chỉ được sử dụng cho mục đích quét và lưu eCard. Chúng tôi không thu thập dữ liệu cá nhân của bạn lên máy chủ.",
+    "summaryDesc": "Ứng dụng ưu tiên lưu trữ cục bộ. Quyền Camera và Danh bạ chỉ được sử dụng cho mục đích quét và lưu eCard. Chúng tôi không thu thập dữ liệu eCard cá nhân của bạn lên máy chủ; website có thể dùng Google Analytics để đo lường lượt truy cập tổng hợp.",
     "backHome": "Về trang chủ",
     "sections": [
       {
@@ -249,6 +249,7 @@
         "title": "5. Dịch vụ bên thứ ba",
         "body": [
           "Expo: Chúng tôi sử dụng hạ tầng của Expo để xử lý thông báo đẩy (Push Notifications).",
+          "Google Analytics: Website sử dụng Google Analytics để hiểu dữ liệu tổng hợp về lượt truy cập, lượt xem trang, thiết bị/trình duyệt và nguồn truy cập. Google có thể xử lý dữ liệu này theo chính sách riêng của họ.",
           "App Store & Google Play: Việc tải xuống và thanh toán (nếu có) được xử lý bởi nền tảng của Apple và Google theo chính sách riêng của họ."
         ]
       },
