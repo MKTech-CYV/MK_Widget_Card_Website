@@ -15,17 +15,17 @@ export function CodeBlock({
   onCopy: () => void;
 }) {
   return (
-    <div className="overflow-hidden rounded-[8px] border border-white/10 bg-[#070707]">
-      <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-        <div className="flex items-center gap-2 text-sm font-medium text-zinc-300">
-          <Terminal className="size-4 text-cyan-300" />
-          {title}
+    <div className="min-w-0 overflow-hidden rounded-[8px] border border-white/10 bg-[#070707]">
+      <div className="flex items-start justify-between gap-3 border-b border-white/10 px-3 py-3 sm:items-center sm:px-4">
+        <div className="flex min-w-0 flex-1 items-start gap-2 text-sm font-medium leading-5 text-zinc-300 sm:items-center">
+          <Terminal className="mt-0.5 size-4 shrink-0 text-cyan-300 sm:mt-0" />
+          <span className="min-w-0 text-wrap break-words">{title}</span>
         </div>
         <Button
           aria-label={`${copyLabel} ${title}`}
           variant="ghost"
           size="icon-sm"
-          className="text-zinc-500 hover:text-white"
+          className="shrink-0 text-zinc-500 hover:text-white"
           onClick={onCopy}
         >
           {copied ? (
@@ -35,7 +35,7 @@ export function CodeBlock({
           )}
         </Button>
       </div>
-      <pre className="overflow-x-auto p-4 text-xs leading-6 text-zinc-400 sm:text-sm">
+      <pre className="max-w-full overflow-x-auto p-3 text-xs leading-6 text-zinc-400 sm:p-4 sm:text-sm">
         <code>{command}</code>
       </pre>
     </div>

@@ -25,10 +25,10 @@ export function GuideSection() {
   );
 
   return (
-    <section id="guide" className="px-4 py-24 sm:px-6 lg:px-8">
+    <section id="guide" className="px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-16 lg:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div>
+        <div className="grid min-w-0 gap-12 lg:grid-cols-[0.95fr_minmax(0,1.05fr)] lg:items-start lg:gap-12">
+          <div className="min-w-0">
             <SectionHeading
               eyebrow={t("eyebrow")}
               title={t("title")}
@@ -59,8 +59,8 @@ export function GuideSection() {
             </Reveal>
           </div>
 
-          <Reveal delay={0.08}>
-            <div className="space-y-4">
+          <Reveal delay={0.08} className="min-w-0">
+            <div className="min-w-0 space-y-4">
               <CodeBlock
                 title={t("commands.clone")}
                 command={CLONE_COMMAND}
