@@ -9,7 +9,7 @@ export const CONTACT_EMAIL = "contact@tranminhkhoi.dev";
 export const GITHUB_URL = "https://github.com/MKTech-CYV/MK_Widget_Card";
 export const TWITTER_URL = "https://x.com/win070802";
 export const TWITTER_HANDLE = "@win070802";
-export const LAST_UPDATED = "2026-05-12";
+export const LAST_UPDATED = "2026-05-15";
 
 export type AppLocale = (typeof routing.locales)[number];
 

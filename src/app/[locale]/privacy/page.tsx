@@ -59,8 +59,8 @@ export default async function PrivacyPolicy({
   setRequestLocale(locale);
   const t = await getTranslations("privacy");
 
-  const sectionsKeys = [0, 1, 2, 3, 4, 5, 6];
-  const sectionBodyCounts = [2, 2, 3, 2, 3, 2, 2];
+  const sectionsKeys = [0, 1, 2, 3, 4, 5, 6, 7];
+  const sectionBodyCounts = [2, 3, 4, 2, 5, 2, 2, 2];
 
   return (
     <main className="min-h-screen bg-black text-zinc-100">

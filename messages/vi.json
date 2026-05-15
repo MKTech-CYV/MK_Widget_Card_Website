@@ -60,7 +60,20 @@
   },
   "productSection": {
     "title": "Giải pháp định danh kỹ thuật số toàn diện.",
-    "description": "MK Widget Card cung cấp một quy trình khép kín từ việc tạo hồ sơ, quản lý mã QR thông minh đến việc hiển thị thông tin tức thì trên màn hình chính của điện thoại."
+    "description": "MK Widget Card cung cấp một quy trình khép kín từ việc tạo hồ sơ, quản lý mã QR thông minh đến việc hiển thị thông tin tức thì trên màn hình chính của điện thoại.",
+    "bannerAlt": "Banner giới thiệu MK Widget Card trên iPhone"
+  },
+  "releaseSection": {
+    "eyebrow": "App Store",
+    "title": "Đã chính thức có trên App Store.",
+    "description": "MK Widget Card đã được phát hành trên App Store vào ngày 15.05.2026. Xem video cập nhật dọc và khám phá trải nghiệm iOS.",
+    "bannerAlt": "Banner demo ngang cho MK Widget Card",
+    "publishedLabel": "Phát hành",
+    "publishedTitle": "Ra mắt App Store",
+    "publishedDescription": "Dự án đã có trên App Store với eCard thông minh, mã QR và tiện ích màn hình chính.",
+    "releaseDate": "15.05.2026",
+    "platform": "iOS",
+    "videoFallback": "Trình duyệt của bạn không hỗ trợ video nhúng."
   },
   "gallerySection": {
     "eyebrow": "Thư viện",
@@ -210,61 +223,71 @@
     "metaDescription": "Chính sách quyền riêng tư của MK Widget Card, bao gồm dữ liệu eCard cục bộ, quét QR, quyền thiết bị và đồng bộ Widget.",
     "label": "Chính sách quyền riêng tư",
     "title": "Chính sách quyền riêng tư - MK Widget Card.",
-    "lastUpdated": "Cập nhật lần cuối: 12 tháng 5, 2026. Chính sách này mô tả cách ứng dụng MK Widget Card thu thập, sử dụng và bảo vệ thông tin của bạn.",
+    "lastUpdated": "Cập nhật lần cuối: 15 tháng 5, 2026. Chính sách này mô tả cách ứng dụng MK Widget Card thu thập, sử dụng và bảo vệ thông tin của bạn.",
     "summaryTitle": "Tóm tắt",
-    "summaryDesc": "Ứng dụng ưu tiên lưu trữ cục bộ. Quyền Camera và Danh bạ chỉ được sử dụng cho mục đích quét và lưu eCard. Chúng tôi không thu thập dữ liệu eCard cá nhân của bạn lên máy chủ; website có thể dùng Google Analytics để đo lường lượt truy cập tổng hợp.",
+    "summaryDesc": "Ứng dụng ưu tiên lưu trữ cục bộ và bảo mật tuyệt đối. Dữ liệu chỉ được lưu lên máy chủ khi bạn chủ động đăng nhập và lưu mẫu vào tài khoản để đồng bộ. Camera, Danh bạ và Thư viện ảnh chỉ được dùng cho mục đích quét, lưu eCard và chọn ảnh đại diện.",
     "backHome": "Về trang chủ",
     "sections": [
       {
         "title": "1. Nguyên tắc chung",
         "body": [
           "MK Widget Card được thiết kế theo hướng privacy-first và local-first. Chúng tôi tôn trọng quyền riêng tư của bạn và cam kết bảo vệ dữ liệu cá nhân của người dùng.",
-          "Ứng dụng hoạt động chủ yếu bằng cách lưu trữ dữ liệu trực tiếp trên thiết bị của bạn. Chúng tôi không thu thập dữ liệu nhạy cảm trên máy chủ trừ khi cần thiết cho các chức năng cụ thể như thông báo đẩy."
+          "Ứng dụng hoạt động chủ yếu bằng cách lưu trữ dữ liệu trực tiếp trên thiết bị của bạn. Chúng tôi không thu thập dữ liệu nhạy cảm trên máy chủ trừ khi bạn sử dụng tính năng đồng bộ tài khoản."
         ]
       },
       {
         "title": "2. Dữ liệu bạn cung cấp",
         "body": [
-          "Thông tin eCard: Tên, chức vụ, email, số điện thoại, mạng xã hội và các liên kết mà bạn chủ động nhập để tạo danh thiếp kỹ thuật số.",
-          "Dữ liệu QR: Thông tin chứa trong mã QR mà bạn tạo hoặc quét thông qua ứng dụng.",
-          "Cấu hình Widget: Các tùy chọn hiển thị mà bạn thiết lập để đưa thông tin lên màn hình chính."
+          "Thông tin eCard: Tên, chức vụ, công ty, email, số điện thoại, website, địa chỉ, ảnh đại diện, giới thiệu ngắn và các liên kết xã hội.",
+          "Dữ liệu QR Bank: Mã ngân hàng, số tài khoản và tên chủ tài khoản để tạo mã VietQR.",
+          "Dữ liệu tài khoản: Nếu bạn đăng nhập, eCard, QR Bank, ảnh đại diện hoặc ảnh eCard có thể được lưu trữ để đồng bộ giữa các thiết bị."
         ]
       },
       {
         "title": "3. Quyền truy cập thiết bị",
         "body": [
-          "Camera: Được sử dụng để quét mã QR danh thiếp từ người dùng khác. Chúng tôi không lưu trữ hình ảnh hoặc video từ camera ngoài nội dung mã QR được giải mã.",
-          "Danh bạ (Contacts): Cho phép bạn lưu trực tiếp thông tin từ eCard đã quét vào danh bạ điện thoại. Ứng dụng chỉ ghi thông tin mới và không đọc hoặc tải danh bạ hiện có của bạn lên máy chủ.",
-          "Thông báo (Notifications): Được sử dụng để gửi các cập nhật quan trọng hoặc nhắc nhở. Chúng tôi sử dụng Expo Push Tokens để định danh thiết bị nhận thông báo một cách ẩn danh."
+          "Camera: Được sử dụng khi bạn quét mã QR danh thiếp. Chúng tôi không lưu trữ hình ảnh từ camera ngoài nội dung mã QR được giải mã.",
+          "Thư viện ảnh: Được sử dụng khi bạn chọn ảnh đại diện hoặc upload ảnh eCard từ thiết bị.",
+          "Danh bạ (Contacts): Cho phép bạn lưu trực tiếp thông tin từ eCard đã quét vào danh bạ điện thoại. Ứng dụng chỉ ghi thông tin mới khi bạn chủ động lưu và không đọc danh bạ hiện có của bạn.",
+          "Thông báo: Dùng để nhận các cập nhật quan trọng hoặc thông báo hệ thống công khai trong ứng dụng."
         ]
       },
       {
         "title": "4. Lưu trữ và Đồng bộ",
         "body": [
-          "Lưu trữ cục bộ: Tất cả thông tin cá nhân và eCard của bạn được lưu trữ an toàn trên bộ nhớ của thiết bị (Sử dụng App Groups trên iOS để chia sẻ dữ liệu giữa App và Widget).",
-          "Đồng bộ Widget: Dữ liệu được chia sẻ nội bộ giữa ứng dụng chính và tiện ích màn hình chính (Widget) để hiển thị thông tin nhanh chóng mà không cần mở ứng dụng."
+          "Lưu trữ cục bộ: Tất cả thông tin được lưu trữ an toàn trên bộ nhớ thiết bị. Trên iOS, App Group được dùng để chia sẻ dữ liệu mã QR sang Widget.",
+          "Đồng bộ tài khoản: Sử dụng Supabase để lưu trữ hồ sơ, mẫu eCard/QR Bank và ảnh khi bạn đăng nhập. Dữ liệu được truyền qua kết nối HTTPS bảo mật."
         ]
       },
       {
         "title": "5. Dịch vụ bên thứ ba",
         "body": [
-          "Expo: Chúng tôi sử dụng hạ tầng của Expo để xử lý thông báo đẩy (Push Notifications).",
-          "Google Analytics: Website sử dụng Google Analytics để hiểu dữ liệu tổng hợp về lượt truy cập, lượt xem trang, thiết bị/trình duyệt và nguồn truy cập. Google có thể xử lý dữ liệu này theo chính sách riêng của họ.",
-          "App Store & Google Play: Việc tải xuống và thanh toán (nếu có) được xử lý bởi nền tảng của Apple và Google theo chính sách riêng của họ."
+          "Supabase: Cung cấp hạ tầng đăng nhập, lưu trữ mẫu eCard/QR Bank và hình ảnh.",
+          "VietQR: Được sử dụng để tải mã QR ngân hàng khi bạn sử dụng tính năng QR Bank.",
+          "Google Auth: Xử lý đăng nhập thông qua Google và Supabase.",
+          "mktechvn.com: Khi chia sẻ eCard, ứng dụng tạo liên kết chứa thông tin bạn đã chọn công khai.",
+          "Google Analytics: Website sử dụng để đo lường lượt truy cập tổng hợp, không định danh cá nhân."
         ]
       },
       {
-        "title": "6. Bảo mật dữ liệu",
+        "title": "6. Widget, QR và chia sẻ",
         "body": [
-          "Chúng tôi áp dụng các biện pháp bảo mật tiêu chuẩn để bảo vệ dữ liệu của bạn trên thiết bị. Vì dữ liệu nằm trên máy của bạn, chúng tôi khuyến khích bạn sử dụng các tính năng bảo mật của hệ điều hành (như FaceID, vân tay hoặc mật khẩu thiết bị).",
-          "Chúng tôi không bán, trao đổi hoặc chuyển giao dữ liệu cá nhân của bạn cho bên thứ ba."
+          "Mã QR và Widget hiển thị dữ liệu bạn đã nhập. Người khác có thể xem thông tin nếu họ quét mã hoặc nhận link do bạn chia sẻ.",
+          "Hãy chỉ nhập và chia sẻ những thông tin bạn muốn công khai. Bạn luôn có quyền kiểm soát, chỉnh sửa hoặc xóa dữ liệu của mình."
         ]
       },
       {
-        "title": "7. Cập nhật và Liên hệ",
+        "title": "7. Bảo mật và Theo dõi",
         "body": [
-          "Chính sách này có thể được cập nhật để phù hợp với các tính năng mới của ứng dụng. Mọi thay đổi sẽ được cập nhật tại trang này.",
-          "Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ qua email: contact@tranminhkhoi.dev"
+          "Chúng tôi không bán dữ liệu cá nhân, không quảng cáo và không sử dụng tracking xuyên ứng dụng.",
+          "Dữ liệu được bảo vệ bằng các tiêu chuẩn HTTPS và các biện pháp bảo mật của hệ điều hành. Bạn nên tự bảo vệ thiết bị và tài khoản cá nhân."
+        ]
+      },
+      {
+        "title": "8. Cập nhật và Liên hệ",
+        "body": [
+          "Chính sách này có thể được cập nhật khi ứng dụng có tính năng mới. Mọi thay đổi sẽ được cập nhật tại trang này.",
+          "Để được hỗ trợ hoặc yêu cầu xử lý dữ liệu tài khoản, vui lòng liên hệ: contact@tranminhkhoi.dev"
         ]
       }
     ]
@@ -274,29 +297,29 @@
     "metaDescription": "Điều khoản dịch vụ của MK Widget Card, bao gồm cách sử dụng ứng dụng, nội dung người dùng, sở hữu trí tuệ và giới hạn dịch vụ.",
     "label": "Điều khoản",
     "title": "Điều khoản dịch vụ - MK Widget Card.",
-    "lastUpdated": "Cập nhật lần cuối: 12 tháng 5, 2026. Các điều khoản này quy định việc sử dụng ứng dụng và các dịch vụ đi kèm của chúng tôi.",
+    "lastUpdated": "Cập nhật lần cuối: 15 tháng 5, 2026. Các điều khoản này quy định việc sử dụng ứng dụng và các dịch vụ đi kèm của chúng tôi.",
     "contactTitle": "7. Liên hệ",
-    "contactDesc": "Mọi câu hỏi về điều khoản dịch vụ, vui lòng liên hệ qua email: ",
+    "contactDesc": "Mọi câu hỏi về điều khoản dịch vụ, vui lòng liên hệ qua email: contact@tranminhkhoi.dev",
     "sections": [
       {
-        "title": "1. Chấp nhận điều khoản",
-        "body": "Bằng cách tải xuống, cài đặt hoặc sử dụng ứng dụng MK Widget Card, bạn đồng ý tuân thủ các điều khoản sử dụng này. Nếu bạn không đồng ý, vui lòng không sử dụng ứng dụng."
+        "title": "1. Phạm vi sử dụng",
+        "body": "MK Widget Card giúp bạn tạo eCard, mã QR liên hệ, mã QR ngân hàng và widget truy cập nhanh. Bạn chịu trách nhiệm về tính chính xác của thông tin đã nhập và những thông tin bạn chọn hiển thị hoặc chia sẻ."
       },
       {
         "title": "2. Quyền sở hữu trí tuệ",
-        "body": "Tất cả nội dung, mã nguồn, thiết kế, logo và các tài sản trí tuệ khác liên quan đến MK Widget Card thuộc sở hữu của Trần Minh Khôi. Bạn không được sao chép, sửa đổi hoặc phân phối mà không có sự đồng ý bằng văn bản."
+        "body": "Tất cả nội dung, mã nguồn, thiết kế và logo liên quan đến MK Widget Card thuộc sở hữu của MKTech / Trần Minh Khôi. Bạn không được sao chép hoặc phân phối mà không có sự đồng ý."
       },
       {
         "title": "3. Nội dung người dùng",
-        "body": "Bạn chịu trách nhiệm hoàn toàn về các thông tin cá nhân, liên kết và dữ liệu bạn nhập vào ứng dụng để tạo eCard. Bạn cam kết thông tin cung cấp là chính xác và không vi phạm pháp luật hoặc quyền của bên thứ ba."
+        "body": "Bạn chịu trách nhiệm hoàn toàn về các thông tin cá nhân và dữ liệu bạn nhập vào ứng dụng. Bạn cam kết thông tin cung cấp là chính xác và không vi phạm pháp luật."
       },
       {
         "title": "4. Sử dụng dịch vụ",
-        "body": "Ứng dụng được cung cấp nhằm mục đích tạo danh thiếp kỹ thuật số và quản lý thông tin liên lạc. Bạn không được sử dụng ứng dụng cho bất kỳ mục đích bất hợp pháp hoặc gây hại nào, bao gồm việc spam hoặc giả mạo người khác."
+        "body": "Bạn không được sử dụng ứng dụng cho bất kỳ mục đích bất hợp pháp nào, bao gồm việc giả mạo người khác hoặc phát tán thông tin sai lệch thông qua mã QR và link chia sẻ."
       },
       {
         "title": "5. Miễn trừ trách nhiệm",
-        "body": "Ứng dụng được cung cấp 'như hiện có'. Chúng tôi không đảm bảo ứng dụng sẽ không có lỗi hoặc luôn sẵn dụng. Chúng tôi không chịu trách nhiệm cho bất kỳ tổn thất dữ liệu hoặc thiệt hại nào phát sinh từ việc sử dụng ứng dụng."
+        "body": "Ứng dụng được cung cấp 'như hiện có'. Chúng tôi không chịu trách nhiệm cho bất kỳ tổn thất dữ liệu hoặc thiệt hại nào phát sinh từ việc sử dụng ứng dụng hoặc sự cố từ dịch vụ bên thứ ba."
       },
       {
         "title": "6. Thay đổi điều khoản",
