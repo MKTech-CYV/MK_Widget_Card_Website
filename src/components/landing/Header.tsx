@@ -92,7 +92,7 @@ export function Header() {
             <Code2 className="size-4" />
             {t("github")}
           </ActionLink>
-          {((GOOGLE_PLAY_URL && GOOGLE_PLAY_URL !== "#") || (APP_STORE_URL && APP_STORE_URL !== "#")) && (
+          {(GOOGLE_PLAY_URL || APP_STORE_URL) && (
             <ActionLink href="#download" className="h-9 px-4">
               <Download className="size-4" />
               {t("download")}
@@ -147,7 +147,7 @@ export function Header() {
                   <Code2 className="size-4" />
                   {t("github")}
                 </ActionLink>
-                {((GOOGLE_PLAY_URL && GOOGLE_PLAY_URL !== "#") || (APP_STORE_URL && APP_STORE_URL !== "#")) && (
+                {(GOOGLE_PLAY_URL || APP_STORE_URL) && (
                   <ActionLink
                     href="#download"
                     className="w-full justify-center"
