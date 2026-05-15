@@ -1,8 +1,9 @@
 import { useTranslations } from "next-intl";
-import { Zap, Play, Apple, Code2 } from "lucide-react";
+import { Zap, Play, Code2 } from "lucide-react";
 import { Reveal } from "./ui/Reveal";
 import { ActionLink } from "./ui/ActionLink";
 import { GITHUB_URL, GOOGLE_PLAY_URL, APP_STORE_URL } from "./constants";
+import { AppleLogo } from "./ui/AppleLogo";
 
 export function DownloadCTA() {
   const t = useTranslations("footer");
@@ -23,15 +24,15 @@ export function DownloadCTA() {
           {t("readyDesc")}
         </p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-          {GOOGLE_PLAY_URL && GOOGLE_PLAY_URL !== "#" && (
+          {GOOGLE_PLAY_URL && (
             <ActionLink href={GOOGLE_PLAY_URL}>
               <Play className="size-4" />
               {th("chplay")}
             </ActionLink>
           )}
-          {APP_STORE_URL && APP_STORE_URL !== "#" && (
-            <ActionLink href={APP_STORE_URL} variant="secondary">
-              <Apple className="size-4" />
+          {APP_STORE_URL && (
+            <ActionLink href={APP_STORE_URL} variant="secondary" external>
+              <AppleLogo className="size-4" />
               {th("appstore")}
             </ActionLink>
           )}

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { QrCode, Smartphone, ShieldCheck, WandSparkles } from "lucide-react";
 import { SectionHeading } from "./ui/SectionHeading";
@@ -22,7 +23,18 @@ export function ProductSection() {
           description={t("productSection.description")}
         />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
+          <Image
+            src="/gallery/iphone_mockup_banner.png"
+            alt={t("productSection.bannerAlt")}
+            width={1600}
+            height={840}
+            className="h-auto w-full object-cover"
+            priority
+          />
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((feature, index) => (
             <FeatureCard
               key={feature.title}

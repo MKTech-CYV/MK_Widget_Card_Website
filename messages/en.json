@@ -60,7 +60,20 @@
   },
   "productSection": {
     "title": "Comprehensive Digital Identity Solution.",
-    "description": "MK Widget Card provides a closed-loop process from profile creation and smart QR code management to instant information display on your phone's home screen."
+    "description": "MK Widget Card provides a closed-loop process from profile creation and smart QR code management to instant information display on your phone's home screen.",
+    "bannerAlt": "MK Widget Card app demo banner on iPhone"
+  },
+  "releaseSection": {
+    "eyebrow": "App Store",
+    "title": "Now live on the App Store.",
+    "description": "MK Widget Card was published to the App Store on 15.05.2026. Watch the vertical launch update and explore the iOS experience.",
+    "bannerAlt": "Horizontal demo banner for MK Widget Card",
+    "publishedLabel": "Published",
+    "publishedTitle": "App Store launch",
+    "publishedDescription": "The project is live on the App Store with smart eCard, QR code, and home screen widget support.",
+    "releaseDate": "15.05.2026",
+    "platform": "iOS",
+    "videoFallback": "Your browser does not support embedded video."
   },
   "gallerySection": {
     "eyebrow": "Gallery",
@@ -210,61 +223,71 @@
     "metaDescription": "Privacy policy for MK Widget Card, covering local eCard data, QR scanning, device permissions and Widget sync.",
     "label": "Privacy Policy",
     "title": "Privacy Policy - MK Widget Card.",
-    "lastUpdated": "Last updated: May 12, 2026. This policy describes how the MK Widget Card app collects, uses, and protects your information.",
+    "lastUpdated": "Last updated: May 15, 2026. This policy describes how the MK Widget Card app collects, uses, and protects your information.",
     "summaryTitle": "Summary",
-    "summaryDesc": "The app prioritizes local storage. Camera and Contact permissions are only used for scanning and saving eCards. We do not collect your personal eCard data on our servers; the website may use Google Analytics for aggregated usage measurement.",
+    "summaryDesc": "The app prioritizes local storage and absolute privacy. Data is only saved to our servers if you explicitly sign in and save presets to your account for sync. Camera, Contacts, and Photo Library permissions are used only for scanning, saving eCards, and choosing profile pictures.",
     "backHome": "Back to Home",
     "sections": [
       {
         "title": "1. General Principles",
         "body": [
           "MK Widget Card is designed to be privacy-first and local-first. We respect your privacy and are committed to protecting the personal data of our users.",
-          "The app operates primarily by storing data directly on your device. We do not collect sensitive data on our servers unless necessary for specific functions such as push notifications."
+          "The app operates primarily by storing data directly on your device. We do not collect sensitive data on our servers unless you use account sync features."
         ]
       },
       {
         "title": "2. Data You Provide",
         "body": [
-          "eCard Information: Name, title, email, phone number, social networks, and links that you actively enter to create a digital business card.",
-          "QR Data: Information contained in the QR codes you create or scan through the app.",
-          "Widget Configuration: Display options you set to bring information to your home screen."
+          "eCard Information: Full name, title, company, email, phone number, website, address, avatar, short bio, and social links.",
+          "QR Bank Data: Bank code, account number, and account holder name to generate VietQR codes.",
+          "Account Data: If you sign in, eCards, QR Banks, avatars, or eCard images may be stored for synchronization across devices."
         ]
       },
       {
         "title": "3. Device Access Permissions",
         "body": [
-          "Camera: Used to scan QR codes of business cards from other users. We do not store images or videos from the camera other than the decoded QR code content.",
-          "Contacts: Allows you to save information from scanned eCards directly to your phone's contacts. The app only writes new information and does not read or upload your existing contacts to our servers.",
-          "Notifications: Used to send important updates or reminders. We use Expo Push Tokens to identify the device receiving notifications anonymously."
+          "Camera: Used when you scan QR codes. We do not store images from the camera other than the decoded QR code content.",
+          "Photo Library: Used when you choose an avatar or upload an eCard image from your device.",
+          "Contacts: Allows you to save information from scanned eCards directly to your phone's contacts. The app only writes new info when you choose to save and does not read your existing contacts.",
+          "Notifications: Used to receive important updates or public system announcements within the app."
         ]
       },
       {
         "title": "4. Storage and Syncing",
         "body": [
-          "Local Storage: All your personal information and eCards are stored securely on your device's memory (Using App Groups on iOS to share data between the App and Widget).",
-          "Widget Syncing: Data is shared internally between the main app and the home screen utility (Widget) to display information quickly without opening the app."
+          "Local Storage: All information is stored securely on your device's memory. On iOS, App Groups are used to share data between the main app and widgets.",
+          "Account Sync: Uses Supabase to store profiles, presets, and images when you are signed in. Data is transmitted via secure HTTPS connections."
         ]
       },
       {
         "title": "5. Third-Party Services",
         "body": [
-          "Expo: We use Expo's infrastructure to handle push notifications.",
-          "Google Analytics: The website uses Google Analytics to understand aggregated visits, page views, device/browser information, and traffic sources. Google may process this data according to its own policies.",
-          "App Store & Google Play: Downloads and payments (if any) are handled by Apple and Google platforms according to their own policies."
+          "Supabase: Provides infrastructure for sign-in, profile storage, and images.",
+          "VietQR: Used to load bank QR images when using the QR Bank feature.",
+          "Google Auth: Handles sign-in via Google and Supabase.",
+          "mktechvn.com: When sharing an eCard, the app creates a link containing the details you chose to make public.",
+          "Google Analytics: Used on the website for aggregated, non-personally identifiable usage measurement."
         ]
       },
       {
-        "title": "6. Data Security",
+        "title": "6. Widgets, QR codes, and sharing",
         "body": [
-          "We apply standard security measures to protect your data on the device. Since the data is on your machine, we encourage you to use the operating system's security features (such as FaceID, fingerprint, or device password).",
-          "We do not sell, trade, or transfer your personal data to third parties."
+          "QR codes and widgets display the data you entered. Others may see your information if they scan your code or receive a link you shared.",
+          "Only enter and share information that you are comfortable making public. You always have control to edit or delete your data."
         ]
       },
       {
-        "title": "7. Updates and Contact",
+        "title": "7. Security and Tracking",
         "body": [
-          "This policy may be updated to reflect new features of the app. Any changes will be updated on this page.",
-          "If you have any questions, please contact us via email: contact@tranminhkhoi.dev"
+          "We do not sell personal data, do not show ads, and do not use cross-app tracking.",
+          "Data is protected by HTTPS standards and OS security measures. You should protect your own device and personal account."
+        ]
+      },
+      {
+        "title": "8. Updates and Contact",
+        "body": [
+          "This policy may be updated as the app gains new features. Changes will be updated on this page.",
+          "For support or account data requests, please contact: contact@tranminhkhoi.dev"
         ]
       }
     ]
@@ -274,29 +297,29 @@
     "metaDescription": "Terms of service for MK Widget Card, including app use, user content, intellectual property and service limitations.",
     "label": "Terms",
     "title": "Terms of Service - MK Widget Card.",
-    "lastUpdated": "Last updated: May 12, 2026. These terms govern your use of our app and accompanying services.",
+    "lastUpdated": "Last updated: May 15, 2026. These terms govern your use of our app and accompanying services.",
     "contactTitle": "7. Contact",
-    "contactDesc": "Any questions about the terms of service, please contact us via email: ",
+    "contactDesc": "Any questions about the terms of service, please contact us via email: contact@tranminhkhoi.dev",
     "sections": [
       {
-        "title": "1. Acceptance of Terms",
-        "body": "By downloading, installing, or using the MK Widget Card app, you agree to comply with these terms of use. If you do not agree, please do not use the app."
+        "title": "1. Scope of Use",
+        "body": "MK Widget Card helps you create eCards, contact QR codes, bank QR codes, and quick-access widgets. You are responsible for the accuracy of the information you enter and share."
       },
       {
         "title": "2. Intellectual Property Rights",
-        "body": "All content, source code, design, logo, and other intellectual property assets related to MK Widget Card are owned by Tran Minh Khoi. You may not copy, modify, or distribute them without written consent."
+        "body": "All content, source code, design, and logos related to MK Widget Card are owned by MKTech / Tran Minh Khoi. You may not copy or distribute them without consent."
       },
       {
         "title": "3. User Content",
-        "body": "You are fully responsible for the personal information, links, and data you enter into the app to create eCards. You commit that the information provided is accurate and does not violate laws or third-party rights."
+        "body": "You are fully responsible for the personal information and data you enter into the app. You commit that the information provided is accurate and does not violate any laws."
       },
       {
         "title": "4. Use of Service",
-        "body": "The app is provided for the purpose of creating digital business cards and managing contact information. You may not use the app for any illegal or harmful purpose, including spamming or impersonating others."
+        "body": "You may not use the app for any illegal purpose, including impersonating others or spreading false information through QR codes and sharing links."
       },
       {
         "title": "5. Disclaimer",
-        "body": "The app is provided 'as is'. We do not guarantee that the app will be error-free or always available. We are not responsible for any data loss or damage arising from the use of the app."
+        "body": "The app is provided 'as is'. We are not responsible for any data loss or damage arising from the use of the app or issues from third-party services."
       },
       {
         "title": "6. Changes to Terms",

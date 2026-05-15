@@ -177,7 +177,7 @@ export default async function EcardPage({ searchParams }: EcardPageProps) {
   const { profile, hasData } = parseEcardProfile(query);
   const sampleParams = new URLSearchParams({
     company: "MK Tech",
-    email: "contact@mktechvn.com",
+    email: "contact@tranminhkhoi.dev",
     full_name: "Tran Minh Khoi",
     job_title: "Founder",
     phone: "0900000000",

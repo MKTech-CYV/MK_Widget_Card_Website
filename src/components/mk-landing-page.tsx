@@ -5,6 +5,7 @@ import { Header } from "./landing/Header";
 import { Hero } from "./landing/Hero";
 import { Marquee } from "./landing/Marquee";
 import { ProductSection } from "./landing/ProductSection";
+import { ReleaseSection } from "./landing/ReleaseSection";
 import { GallerySection } from "./landing/GallerySection";
 import { ModulesSection } from "./landing/ModulesSection";
 import { WorkflowSection } from "./landing/WorkflowSection";
@@ -26,6 +27,7 @@ export function MkLandingPage() {
           <Hero />
           <Marquee />
           <ProductSection />
+          <ReleaseSection />
           <GallerySection />
           <ModulesSection />
           <WorkflowSection />
