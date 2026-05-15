@@ -1,7 +1,7 @@
 import { routing } from "@/i18n/routing";
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://mk-widget-card.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://mktechvn.com";
 export const SITE_NAME = "MK Widget Card";
 export const CREATOR_NAME = "Tran Minh Khoi";
 export const CREATOR_URL = "https://tranminhkhoi.dev";

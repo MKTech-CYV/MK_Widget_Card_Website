@@ -12,7 +12,6 @@ import { GuideSection } from "./landing/GuideSection";
 import { CreatorSection } from "./landing/CreatorSection";
 import { DownloadCTA } from "./landing/DownloadCTA";
 import { Footer } from "./landing/Footer";
-
 export function MkLandingPage() {
   return (
     <MotionConfig reducedMotion="user">
