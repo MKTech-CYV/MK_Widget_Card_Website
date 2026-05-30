@@ -73,12 +73,21 @@ export async function generateMetadata({
       locale: locale === "vi" ? "vi_VN" : "en_US",
       alternateLocale: locale === "vi" ? ["en_US"] : ["vi_VN"],
       type: "website",
+      images: [
+        {
+          url: `${SITE_URL}/gallery/iphone_mockup_banner.png`,
+          width: 1600,
+          height: 900,
+          alt: SITE_NAME,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: t("og.title"),
       description: t("og.description"),
       creator: TWITTER_HANDLE,
+      images: [`${SITE_URL}/gallery/iphone_mockup_banner.png`],
     },
     robots: {
       index: true,
