@@ -12,6 +12,8 @@ import {
   SITE_NAME,
   SITE_URL,
   TWITTER_HANDLE,
+  languageAlternates,
+  localizedUrl,
 } from "@/lib/seo";
 import "./globals.css";
 
@@ -56,6 +58,10 @@ export async function generateMetadata({
       template: t("title.template"),
     },
     description: t("description"),
+    alternates: {
+      canonical: localizedUrl(locale),
+      languages: languageAlternates(),
+    },
     keywords,
     authors: [{ name: CREATOR_NAME, url: CREATOR_URL }],
     creator: CREATOR_NAME,

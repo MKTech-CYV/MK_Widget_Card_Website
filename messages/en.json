@@ -22,8 +22,10 @@
     "badge": "MK Widget Card / Digital Identity 2026",
     "title": "Modern eCard & Widget Ecosystem.",
     "desc": "MK Widget Card helps you create professional digital business cards, integrate smart QR codes, and bring important information directly to your home screen through a seamless Widget system on iOS and Android.",
-    "chplay": "CH Play",
+    "chplay": "Google Play",
     "appstore": "App Store",
+    "downloadOn": "Download on the",
+    "getItOn": "GET IT ON",
     "source": "GitHub Source",
     "preview": {
       "console": "Plugin Console",

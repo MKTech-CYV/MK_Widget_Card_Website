@@ -1,13 +1,12 @@
 import { useTranslations } from "next-intl";
-import { Zap, Play, Code2 } from "lucide-react";
+import { Zap, Code2 } from "lucide-react";
 import { Reveal } from "./ui/Reveal";
 import { ActionLink } from "./ui/ActionLink";
 import { GITHUB_URL, GOOGLE_PLAY_URL, APP_STORE_URL } from "./constants";
-import { AppleLogo } from "./ui/AppleLogo";
+import { AppStoreBadge, GooglePlayBadge } from "./ui/StoreBadge";
 
 export function DownloadCTA() {
   const t = useTranslations("footer");
-  const th = useTranslations("hero");
 
   if (!GOOGLE_PLAY_URL && !APP_STORE_URL) return null;
 
@@ -25,16 +24,10 @@ export function DownloadCTA() {
         </p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           {GOOGLE_PLAY_URL && (
-            <ActionLink href={GOOGLE_PLAY_URL}>
-              <Play className="size-4" />
-              {th("chplay")}
-            </ActionLink>
+            <GooglePlayBadge href={GOOGLE_PLAY_URL} />
           )}
           {APP_STORE_URL && (
-            <ActionLink href={APP_STORE_URL} variant="secondary" external>
-              <AppleLogo className="size-4" />
-              {th("appstore")}
-            </ActionLink>
+            <AppStoreBadge href={APP_STORE_URL} />
           )}
           <ActionLink href={GITHUB_URL} variant="ghost" external>
             <Code2 className="size-4" />

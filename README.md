@@ -68,14 +68,11 @@ Mở [http://localhost:3000](http://localhost:3000) trên trình duyệt để x
 ## ⚙️ Cấu hình thông tin cá nhân
 
 Để thay đổi thông tin trên trang web, bạn chỉ cần chỉnh sửa các hằng số ở đầu file:
-`src/components/mk-landing-page.tsx`
+`src/components/landing/constants.ts`
 
 ```typescript
-const GITHUB_URL = "https://github.com/MKTech-CYV/MK_Widget_Card";
-const GOOGLE_PLAY_URL = ""; // Link CH Play (để trống sẽ tự ẩn nút)
-const APP_STORE_URL = "";   // Link App Store (để trống sẽ tự ẩn nút)
-const CREATOR_URL = "https://tranminhkhoi.dev";
-const CONTACT_EMAIL = "contact@tranminhkhoi.dev";
+export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.mktech.widgetcard";
+export const APP_STORE_URL = "https://apps.apple.com/us/app/mk-widget-card-qr-ng%C3%A2n-h%C3%A0ng/id6768935113";
 ```
 
 ### Thêm ảnh vào Gallery

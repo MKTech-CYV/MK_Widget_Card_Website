@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "MK Widget",
     description:
       "Digital business card, smart QR code and home screen widget ecosystem for iOS and Android.",
-    start_url: "/vi",
+    start_url: "/",
     display: "standalone",
     background_color: "#000000",
     theme_color: "#000000",

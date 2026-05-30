@@ -13,6 +13,7 @@ import {
   languageAlternates,
   localizedUrl,
 } from "@/lib/seo";
+import { GOOGLE_PLAY_URL, APP_STORE_URL } from "@/components/landing/constants";
 
 export async function generateMetadata({
   params,
@@ -67,42 +68,92 @@ export default async function Home({
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
-        name: SITE_NAME,
-        alternateName: ["MK_Widget", "MK eCard"],
-        description: t("description"),
-        inLanguage: locale,
-        publisher: {
+        "url": SITE_URL,
+        "name": SITE_NAME,
+        "alternateName": ["MK_Widget", "MK eCard"],
+        "description": t("description"),
+        "inLanguage": locale,
+        "publisher": {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        "sameAs": [CREATOR_URL, GITHUB_URL, TWITTER_URL],
+      },
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        "name": "MKTech",
+        "url": SITE_URL,
+        "logo": `${SITE_URL}/favicon.png`,
+        "sameAs": [GITHUB_URL, TWITTER_URL],
+        "founder": {
           "@id": `${CREATOR_URL}/#person`,
         },
-        sameAs: [CREATOR_URL, GITHUB_URL, TWITTER_URL],
       },
       {
         "@type": "Person",
         "@id": `${CREATOR_URL}/#person`,
-        name: CREATOR_NAME,
-        url: CREATOR_URL,
-        email: CONTACT_EMAIL,
-        sameAs: [GITHUB_URL, TWITTER_URL],
+        "name": CREATOR_NAME,
+        "url": CREATOR_URL,
+        "email": CONTACT_EMAIL,
+        "sameAs": [GITHUB_URL, TWITTER_URL],
       },
       {
-        "@type": "SoftwareApplication",
-        "@id": `${SITE_URL}/#software`,
-        name: SITE_NAME,
-        alternateName: ["MK_Widget", "MK_eCard"],
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "iOS, Android, Web",
-        url: localizedUrl(locale),
-        codeRepository: GITHUB_URL,
-        creator: {
+        "@type": "MobileApplication",
+        "@id": `${SITE_URL}/#ios-app`,
+        "name": SITE_NAME,
+        "alternateName": ["MK_Widget", "MK_eCard"],
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "iOS",
+        "downloadUrl": APP_STORE_URL,
+        "url": localizedUrl(locale),
+        "codeRepository": GITHUB_URL,
+        "author": {
           "@id": `${CREATOR_URL}/#person`,
         },
-        description: appDescription,
-        offers: {
-          "@type": "Offer",
-          price: "0",
-          priceCurrency: "USD",
+        "publisher": {
+          "@id": `${SITE_URL}/#organization`,
         },
+        "description": appDescription,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+        },
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": `${SITE_URL}/#android-app`,
+        "name": SITE_NAME,
+        "alternateName": ["MK_Widget", "MK_eCard"],
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Android",
+        "downloadUrl": GOOGLE_PLAY_URL,
+        "url": localizedUrl(locale),
+        "codeRepository": GITHUB_URL,
+        "author": {
+          "@id": `${CREATOR_URL}/#person`,
+        },
+        "publisher": {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        "description": appDescription,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": localizedUrl(locale),
+          },
+        ],
       },
     ],
   };

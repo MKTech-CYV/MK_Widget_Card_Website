@@ -2,14 +2,14 @@
 
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Play, Code2 } from "lucide-react";
+import { Code2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { ActionLink } from "./ui/ActionLink";
 import { GITHUB_URL, GOOGLE_PLAY_URL, APP_STORE_URL } from "./constants";
 import { cn } from "@/lib/utils";
 import { BadgeCheck, CreditCard, Globe2, QrCode } from "lucide-react";
-import { AppleLogo } from "./ui/AppleLogo";
+import { AppStoreBadge, GooglePlayBadge } from "./ui/StoreBadge";
 
 function HeroPreview({ reduceMotion }: { reduceMotion: boolean }) {
   const t = useTranslations("hero");
@@ -243,24 +243,10 @@ export function Hero() {
             className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             {GOOGLE_PLAY_URL && (
-              <ActionLink
-                href={GOOGLE_PLAY_URL}
-                className="w-full sm:w-auto"
-              >
-                <Play className="size-4" />
-                {t("chplay")}
-              </ActionLink>
+              <GooglePlayBadge href={GOOGLE_PLAY_URL} />
             )}
             {APP_STORE_URL && (
-              <ActionLink
-                href={APP_STORE_URL}
-                variant="secondary"
-                className="w-full sm:w-auto"
-                external
-              >
-                <AppleLogo className="size-4" />
-                {t("appstore")}
-              </ActionLink>
+              <AppStoreBadge href={APP_STORE_URL} />
             )}
             <ActionLink
               href={GITHUB_URL}

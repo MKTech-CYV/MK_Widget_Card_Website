@@ -62,8 +62,33 @@ export default async function PrivacyPolicy({
   const sectionsKeys = [0, 1, 2, 3, 4, 5, 6, 7];
   const sectionBodyCounts = [2, 3, 4, 2, 5, 2, 2, 2];
 
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/privacy/#breadcrumb`,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": localizedUrl(locale),
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t("metaTitle"),
+        "item": localizedUrl(locale, "/privacy"),
+      },
+    ],
+  };
+
   return (
-    <main className="min-h-screen bg-black text-zinc-100">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+      />
+      <main className="min-h-screen bg-black text-zinc-100">
       <div className="fixed inset-0 -z-10 mk-grid-fade opacity-60" />
 
       <header className="border-b border-white/10 bg-black/80 backdrop-blur-xl">
@@ -128,5 +153,6 @@ export default async function PrivacyPolicy({
         </div>
       </section>
     </main>
+    </>
   );
 }
