@@ -5,11 +5,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Code2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
-import { ActionLink } from "./ui/ActionLink";
 import { GITHUB_URL, GOOGLE_PLAY_URL, APP_STORE_URL } from "./constants";
 import { cn } from "@/lib/utils";
 import { BadgeCheck, CreditCard, Globe2, QrCode } from "lucide-react";
-import { AppStoreBadge, GooglePlayBadge } from "./ui/StoreBadge";
+import { AppStoreBadge, GooglePlayBadge, GitHubBadge } from "./ui/StoreBadge";
 
 function HeroPreview({ reduceMotion }: { reduceMotion: boolean }) {
   const t = useTranslations("hero");
@@ -248,15 +247,7 @@ export function Hero() {
             {APP_STORE_URL && (
               <AppStoreBadge href={APP_STORE_URL} />
             )}
-            <ActionLink
-              href={GITHUB_URL}
-              variant="ghost"
-              external
-              className="w-full sm:w-auto"
-            >
-              <Code2 className="size-4" />
-              {t("source")}
-            </ActionLink>
+            <GitHubBadge href={GITHUB_URL} />
           </motion.div>
 
           <motion.div

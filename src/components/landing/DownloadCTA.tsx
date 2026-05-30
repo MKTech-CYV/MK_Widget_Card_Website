@@ -1,9 +1,8 @@
 import { useTranslations } from "next-intl";
-import { Zap, Code2 } from "lucide-react";
+import { Zap } from "lucide-react";
 import { Reveal } from "./ui/Reveal";
-import { ActionLink } from "./ui/ActionLink";
 import { GITHUB_URL, GOOGLE_PLAY_URL, APP_STORE_URL } from "./constants";
-import { AppStoreBadge, GooglePlayBadge } from "./ui/StoreBadge";
+import { AppStoreBadge, GooglePlayBadge, GitHubBadge } from "./ui/StoreBadge";
 
 export function DownloadCTA() {
   const t = useTranslations("footer");
@@ -29,10 +28,7 @@ export function DownloadCTA() {
           {APP_STORE_URL && (
             <AppStoreBadge href={APP_STORE_URL} />
           )}
-          <ActionLink href={GITHUB_URL} variant="ghost" external>
-            <Code2 className="size-4" />
-            GitHub Repo
-          </ActionLink>
+          <GitHubBadge href={GITHUB_URL} />
         </div>
       </Reveal>
     </section>
