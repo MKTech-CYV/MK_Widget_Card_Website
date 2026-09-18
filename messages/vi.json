@@ -226,7 +226,7 @@
     "metaDescription": "Chính sách quyền riêng tư của MK Widget Card, bao gồm dữ liệu eCard cục bộ, quét QR, quyền thiết bị và đồng bộ Widget.",
     "label": "Chính sách quyền riêng tư",
     "title": "Chính sách quyền riêng tư - MK Widget Card.",
-    "lastUpdated": "Cập nhật lần cuối: 15 tháng 5, 2026. Chính sách này mô tả cách ứng dụng MK Widget Card thu thập, sử dụng và bảo vệ thông tin của bạn.",
+    "lastUpdated": "Cập nhật lần cuối: 18 tháng 9, 2026. Chính sách này mô tả cách ứng dụng MK Widget Card thu thập, sử dụng và bảo vệ thông tin của bạn.",
     "summaryTitle": "Tóm tắt",
     "summaryDesc": "Ứng dụng ưu tiên lưu trữ cục bộ và bảo mật tuyệt đối. Dữ liệu chỉ được lưu lên máy chủ khi bạn chủ động đăng nhập và lưu mẫu vào tài khoản để đồng bộ. Camera, Danh bạ và Thư viện ảnh chỉ được dùng cho mục đích quét, lưu eCard và chọn ảnh đại diện.",
     "backHome": "Về trang chủ",
@@ -243,7 +243,8 @@
         "body": [
           "Thông tin eCard: Tên, chức vụ, công ty, email, số điện thoại, website, địa chỉ, ảnh đại diện, giới thiệu ngắn và các liên kết xã hội.",
           "Dữ liệu QR Bank: Mã ngân hàng, số tài khoản và tên chủ tài khoản để tạo mã VietQR.",
-          "Dữ liệu tài khoản: Nếu bạn đăng nhập, eCard, QR Bank, ảnh đại diện hoặc ảnh eCard có thể được lưu trữ để đồng bộ giữa các thiết bị."
+          "Dữ liệu tài khoản: Nếu bạn đăng nhập, eCard, QR Bank, ảnh đại diện hoặc ảnh eCard có thể được lưu trữ để đồng bộ giữa các thiết bị.",
+          "Thông tin thiết bị và đăng nhập: Khi bạn đăng nhập, chúng tôi ghi nhận model và hãng thiết bị, phiên bản hệ điều hành, phiên bản ứng dụng, mã định danh cài đặt ngẫu nhiên do ứng dụng tạo, ngôn ngữ, múi giờ, phương thức đăng nhập, thời điểm đăng nhập cùng địa chỉ IP và vị trí gần đúng (quốc gia, khu vực, thành phố) suy ra từ IP. Chúng tôi không thu thập vị trí GPS chính xác và không đọc mã định danh phần cứng của thiết bị."
         ]
       },
       {
@@ -259,16 +260,18 @@
         "title": "4. Lưu trữ và Đồng bộ",
         "body": [
           "Lưu trữ cục bộ: Tất cả thông tin được lưu trữ an toàn trên bộ nhớ thiết bị. Trên iOS, App Group được dùng để chia sẻ dữ liệu mã QR sang Widget.",
-          "Đồng bộ tài khoản: Sử dụng Supabase để lưu trữ hồ sơ, mẫu eCard/QR Bank và ảnh khi bạn đăng nhập. Dữ liệu được truyền qua kết nối HTTPS bảo mật."
+          "Đồng bộ tài khoản: Sử dụng Google Firebase (Authentication, Cloud Firestore, Cloud Storage) để lưu trữ hồ sơ, mẫu eCard/QR Bank và ảnh khi bạn đăng nhập. Dữ liệu được truyền qua kết nối HTTPS bảo mật.",
+          "Thời gian lưu giữ: Lịch sử đăng nhập được tự động xóa sau 180 ngày. Thông tin thiết bị được giữ trong thời gian tài khoản còn tồn tại. Khi bạn xóa tài khoản trong ứng dụng, toàn bộ dữ liệu tài khoản, thông tin thiết bị, lịch sử đăng nhập và liên kết chia sẻ của bạn đều bị xóa."
         ]
       },
       {
         "title": "5. Dịch vụ bên thứ ba",
         "body": [
-          "Supabase: Cung cấp hạ tầng đăng nhập, lưu trữ mẫu eCard/QR Bank và hình ảnh.",
+          "Google Firebase: Cung cấp hạ tầng đăng nhập, lưu trữ mẫu eCard/QR Bank và hình ảnh.",
           "VietQR: Được sử dụng để tải mã QR ngân hàng khi bạn sử dụng tính năng QR Bank.",
-          "Google Auth: Xử lý đăng nhập thông qua Google và Supabase.",
-          "mktechvn.com: Khi chia sẻ eCard, ứng dụng tạo liên kết chứa thông tin bạn đã chọn công khai.",
+          "Đăng nhập với Google và Apple: Xử lý xác thực khi bạn chọn đăng nhập bằng tài khoản Google hoặc Apple, thông qua Firebase Authentication.",
+          "Google AdMob: Ứng dụng có thể hiển thị quảng cáo. AdMob có thể sử dụng mã định danh quảng cáo của thiết bị (Advertising ID) để phục vụ và đo lường quảng cáo. Bạn có thể đặt lại hoặc tắt mã này trong phần cài đặt quyền riêng tư của iOS/Android.",
+          "mktechvn.com: Khi chia sẻ eCard, ứng dụng tạo liên kết rút gọn (mktechvn.com/c/...) hoặc liên kết chứa thông tin bạn đã chọn công khai. Máy chủ của chúng tôi cũng nhận thông tin thiết bị và đăng nhập nêu ở mục 2 để bảo mật tài khoản.",
           "Google Analytics: Website sử dụng để đo lường lượt truy cập tổng hợp, không định danh cá nhân."
         ]
       },
@@ -282,7 +285,8 @@
       {
         "title": "7. Bảo mật và Theo dõi",
         "body": [
-          "Chúng tôi không bán dữ liệu cá nhân, không quảng cáo và không sử dụng tracking xuyên ứng dụng.",
+          "Chúng tôi không bán dữ liệu cá nhân. Thông tin thiết bị, địa chỉ IP và lịch sử đăng nhập chỉ được dùng để bảo mật tài khoản, phát hiện lạm dụng, khắc phục sự cố và hỗ trợ người dùng; chỉ quản trị viên được ủy quyền mới xem được.",
+          "Ứng dụng không dùng dữ liệu của bạn để theo dõi xuyên ứng dụng của bên khác. Quảng cáo do Google AdMob cung cấp có thể sử dụng Advertising ID theo chính sách của Google và lựa chọn của bạn trên thiết bị.",
           "Dữ liệu được bảo vệ bằng các tiêu chuẩn HTTPS và các biện pháp bảo mật của hệ điều hành. Bạn nên tự bảo vệ thiết bị và tài khoản cá nhân."
         ]
       },
