@@ -29,6 +29,7 @@ import {
   DashboardOutlined,
   HistoryOutlined,
   KeyOutlined,
+  LinkOutlined,
   LoginOutlined,
   LogoutOutlined,
   MailOutlined,
@@ -42,6 +43,7 @@ import { getFirebaseAuth, getFirebasePublicConfig } from "@/lib/firebase/client"
 import { AdminsView } from "./views/admins-view";
 import { ContentView } from "./views/content-view";
 import { DevicesView } from "./views/devices-view";
+import { LinksView } from "./views/links-view";
 import { LoginsView } from "./views/logins-view";
 import { OverviewView } from "./views/overview-view";
 import { UsersView } from "./views/users-view";
@@ -51,6 +53,7 @@ type AdminView =
   | "users"
   | "devices"
   | "logins"
+  | "links"
   | "content"
   | "admins"
   | "settings";
@@ -78,6 +81,11 @@ const menuItems: MenuProps["items"] = [
     label: "Lịch sử đăng nhập",
   },
   {
+    key: "links",
+    icon: <LinkOutlined />,
+    label: "Link chia sẻ",
+  },
+  {
     key: "content",
     icon: <AppstoreOutlined />,
     label: "Nội dung app",
@@ -99,6 +107,7 @@ const viewLabels: Record<AdminView, string> = {
   users: "Người dùng",
   devices: "Thiết bị",
   logins: "Lịch sử đăng nhập",
+  links: "Link chia sẻ",
   content: "Nội dung app",
   admins: "Quản trị viên",
   settings: "Cấu hình",
@@ -314,6 +323,8 @@ function AdminDashboard({
         return <DevicesView />;
       case "logins":
         return <LoginsView />;
+      case "links":
+        return <LinksView />;
       case "content":
         return <ContentView />;
       case "admins":

@@ -1,4 +1,5 @@
 import { randomInt } from "node:crypto";
+import { FieldValue } from "firebase-admin/firestore";
 import { adminDb } from "@/lib/firebase/admin";
 import type { EcardSearchParams } from "@/lib/ecard";
 
@@ -125,4 +126,64 @@ export async function loadSharedEcard(code: string) {
   }
 
   return { query: presetToEcardQuery(preset.data() ?? {}) };
+}
+
+class CodeCollisionError extends Error {}
+
+const MAX_CODE_ATTEMPTS = 5;
+
+// Returns the preset's short link, creating it (share_links/{code} plus
+// user_ecards/{id}.share_code) if it does not have a valid one yet. Runs in a
+// transaction so concurrent callers (save + share) end up with one code.
+// Returns null when the preset is missing or, if `expectedUid` is given, not
+// owned by that user.
+export async function ensureEcardShareLink(
+  presetId: string,
+  expectedUid?: string,
+): Promise<{ code: string; created: boolean } | null> {
+  const db = adminDb();
+  const presetRef = db.collection("user_ecards").doc(presetId);
+
+  for (let attempt = 0; attempt < MAX_CODE_ATTEMPTS; attempt += 1) {
+    const code = generateShareCode();
+
+    try {
+      return await db.runTransaction(async (tx) => {
+        const preset = await tx.get(presetRef);
+        const uid = preset.get("user_id") as string | undefined;
+        if (!preset.exists || !uid || (expectedUid && uid !== expectedUid)) {
+          return null;
+        }
+
+        const existing = preset.get("share_code");
+        if (typeof existing === "string" && SHARE_CODE_PATTERN.test(existing)) {
+          const link = await tx.get(db.collection("share_links").doc(existing));
+          if (link.exists && link.get("uid") === uid && link.get("preset_id") === presetId) {
+            return { code: existing, created: false };
+          }
+        }
+
+        const linkRef = db.collection("share_links").doc(code);
+        if ((await tx.get(linkRef)).exists) {
+          throw new CodeCollisionError();
+        }
+
+        tx.create(linkRef, {
+          uid,
+          type: "ecard",
+          preset_id: presetId,
+          created_at: FieldValue.serverTimestamp(),
+        });
+        tx.update(presetRef, { share_code: code });
+        return { code, created: true };
+      });
+    } catch (error) {
+      if (error instanceof CodeCollisionError) {
+        continue;
+      }
+      throw error;
+    }
+  }
+
+  throw new Error("Could not allocate a share code.");
 }
