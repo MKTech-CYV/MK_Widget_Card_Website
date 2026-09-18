@@ -2,10 +2,11 @@ import { adminDb } from "@/lib/firebase/admin";
 import { errorResponse, verifyBearerToken } from "@/lib/firebase/verify-request";
 
 // Called by the app when a user deletes their account, before the Auth user
-// is removed: purges the device registry and login history for that uid.
-// (login_events also expire on their own via the Firestore TTL policy.)
+// is removed: purges the device registry, login history and short share
+// links for that uid. (login_events also expire on their own via the
+// Firestore TTL policy.)
 
-const COLLECTIONS = ["devices", "login_events"] as const;
+const COLLECTIONS = ["devices", "login_events", "share_links"] as const;
 const BATCH_SIZE = 400;
 
 export async function DELETE(request: Request) {
@@ -15,6 +16,7 @@ export async function DELETE(request: Request) {
     const deleted: Record<(typeof COLLECTIONS)[number], number> = {
       devices: 0,
       login_events: 0,
+      share_links: 0,
     };
 
     for (const name of COLLECTIONS) {

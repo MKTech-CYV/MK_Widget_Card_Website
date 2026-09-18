@@ -1,3 +1,4 @@
+import { parsePhoneNumberFromString } from "libphonenumber-js/min";
 import { absoluteUrl } from "@/lib/seo";
 
 export type EcardSearchParams = Record<string, string | string[] | undefined>;
@@ -9,12 +10,14 @@ export type EcardSocial = Record<string, string>;
 export type EcardProfile = {
   label?: string;
   bio?: string;
+  about?: string;
   fullName: string;
   jobTitle?: string;
   company?: string;
   department?: string;
   email?: string;
   phone?: string;
+  phoneDisplay?: string;
   website?: string;
   address?: string;
   avatarUrl?: string;
@@ -107,6 +110,49 @@ function normalizePhone(value: string, countryCode?: string) {
   return `${code}${withoutLeadingZero}`;
 }
 
+// The app stores the number as typed ("0988204060") next to a separate
+// country code ("84"), while older links carry things like "84 988204060".
+// Resolve every variant to E.164 (for tel: links / vCard) plus a readable
+// international form ("+84 988 204 060").
+function resolvePhone(value: string, countryCode?: string) {
+  const digits = value.replace(/\D/g, "");
+  if (!digits) {
+    return { display: value };
+  }
+
+  const code = countryCode?.replace(/\D/g, "");
+  const candidates: string[] = [];
+
+  if (value.trim().startsWith("+")) {
+    candidates.push(`+${digits}`);
+  } else if (digits.startsWith("00")) {
+    candidates.push(`+${digits.slice(2)}`);
+  } else {
+    const local = digits.replace(/^0+/, "");
+    if (code) {
+      if (digits.startsWith(code)) {
+        candidates.push(`+${digits}`);
+      }
+      candidates.push(`+${code}${local}`);
+    } else if (digits.startsWith("0")) {
+      candidates.push(`+84${local}`);
+    } else {
+      candidates.push(`+${digits}`, `+84${local}`);
+    }
+  }
+
+  const parsed = candidates
+    .map((candidate) => parsePhoneNumberFromString(candidate))
+    .filter((number) => number !== undefined);
+  const best = parsed.find((number) => number.isValid()) ?? parsed[0];
+
+  if (best) {
+    return { e164: best.number, display: best.formatInternational() };
+  }
+
+  return { display: value.trim() };
+}
+
 function cleanSocialUrl(
   key: string,
   value: unknown,
@@ -183,12 +229,23 @@ function readSocial(searchParams: EcardSearchParams, data: Record<string, unknow
   const social: EcardSocial = {};
   const socialData = getEcardPayload(searchParams);
 
+  // The app's long share links pass the country codes as plain query params
+  // (countryCode, zaloCountryCode, ...), not inside the `social` JSON, so
+  // Zalo/WhatsApp numbers were being built without their country code.
+  const countryLookup: Record<string, unknown> = { ...socialData };
+  for (const key of ["countryCode", "zaloCountryCode", "whatsappCountryCode"]) {
+    const queryValue = firstParam(searchParams[key]);
+    if (queryValue && !cleanText(countryLookup[key])) {
+      countryLookup[key] = queryValue;
+    }
+  }
+
   for (const definition of socialDefinitions) {
     for (const sourceKey of definition.keys) {
       const value = cleanSocialUrl(
         definition.key,
         firstParam(searchParams[sourceKey]) ?? socialData[sourceKey] ?? data[sourceKey],
-        socialData,
+        countryLookup,
       );
       if (value) {
         social[definition.key] = value;
@@ -219,15 +276,29 @@ export function parseEcardProfile(searchParams: EcardSearchParams) {
   const fullName =
     readValue(searchParams, data, ["full_name", "fullName", "name"]) ?? "";
 
+  const rawPhone = readValue(searchParams, data, ["phone", "tel"]);
+  const phone = rawPhone
+    ? resolvePhone(
+        rawPhone,
+        readValue(searchParams, data, [
+          "countryCode",
+          "country_code",
+          "phone_country_code",
+        ]),
+      )
+    : undefined;
+
   const profile: EcardProfile = {
     label: readValue(searchParams, data, ["label"]),
-    bio: readValue(searchParams, data, ["bio", "about", "description"]),
+    bio: readValue(searchParams, data, ["bio", "tagline", "description"]),
+    about: readValue(searchParams, data, ["about", "about_me", "aboutMe"]),
     fullName,
     jobTitle: readValue(searchParams, data, ["job_title", "jobTitle", "title"]),
     company: readValue(searchParams, data, ["company"]),
     department: readValue(searchParams, data, ["department"]),
     email: readValue(searchParams, data, ["email"]),
-    phone: readValue(searchParams, data, ["phone", "tel"]),
+    phone: phone?.e164 ?? phone?.display,
+    phoneDisplay: phone?.display,
     website: cleanUrl(readValue(searchParams, data, ["website", "url"])),
     address: readValue(searchParams, data, ["address"]),
     avatarUrl: cleanUrl(readValue(searchParams, data, ["avatar_url", "avatarUrl", "avatar"])),
@@ -241,6 +312,7 @@ export function parseEcardProfile(searchParams: EcardSearchParams) {
       profile.website ||
       profile.company ||
       profile.bio ||
+      profile.about ||
       profile.avatarUrl ||
       Object.keys(profile.social).length,
   );
@@ -288,7 +360,9 @@ export function buildVCard(profile: EcardProfile) {
     vCardLine("URL;TYPE=WORK", profile.website),
     profile.avatarUrl ? `PHOTO;VALUE=URI:${escapeVCard(profile.avatarUrl)}` : undefined,
     profile.address ? `ADR;TYPE=WORK:;;${escapeVCard(profile.address)};;;;` : undefined,
-    profile.bio ? `NOTE:${escapeVCard(profile.bio)}` : undefined,
+    [profile.bio, profile.about].filter(Boolean).length
+      ? `NOTE:${escapeVCard([profile.bio, profile.about].filter(Boolean).join("\n\n"))}`
+      : undefined,
     ...Object.entries(profile.social).map(
       ([key, url]) => `URL;TYPE=${escapeVCard(key.toUpperCase())}:${escapeVCard(url)}`,
     ),
@@ -309,6 +383,7 @@ export function buildEcardShareUrl(profile: EcardProfile, locale: EcardLocale = 
   const entries: Array<[string, string | undefined]> = [
     ["label", profile.label],
     ["bio", profile.bio],
+    ["about", profile.about],
     ["full_name", profile.fullName],
     ["job_title", profile.jobTitle],
     ["company", profile.company],
