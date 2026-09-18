@@ -1,7 +1,11 @@
 import { adminAuth, adminDb } from "@/lib/firebase/admin";
 import { errorResponse, requireAdmin } from "@/lib/firebase/verify-request";
 import { absoluteUrl } from "@/lib/seo";
-import { ensureEcardShareLink, SHARE_CODE_PATTERN } from "@/lib/share-links";
+import {
+  ensureEcardShareLink,
+  SHARE_CODE_PATTERN,
+  ShareQuotaError,
+} from "@/lib/share-links";
 
 // Admin view of every short link, plus a backfill that gives each eCard
 // preset without a link one (presets created by app versions that predate
@@ -115,7 +119,16 @@ export async function POST(request: Request) {
     let created = 0;
     for (let index = 0; index < batch.length; index += CONCURRENCY) {
       const results = await Promise.all(
-        batch.slice(index, index + CONCURRENCY).map((id) => ensureEcardShareLink(id)),
+        batch
+          .slice(index, index + CONCURRENCY)
+          .map((id) =>
+            ensureEcardShareLink(id).catch((error: unknown) => {
+              if (error instanceof ShareQuotaError) {
+                return null;
+              }
+              throw error;
+            }),
+          ),
       );
       created += results.filter((result) => result?.created).length;
     }

@@ -17,6 +17,9 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 const SEEN_MIN_INTERVAL_MS = 60 * 60 * 1000;
 const LOGIN_DEDUPE_MS = 30 * 1000;
 const INSTALL_ID_PATTERN = /^[A-Za-z0-9_-]{8,64}$/;
+// Real users have a handful of devices; this stops one account from filling
+// the collection with made-up install ids.
+const MAX_DEVICES_PER_USER = 30;
 
 function text(value: unknown, max: number) {
   if (typeof value !== "string") {
@@ -78,6 +81,17 @@ export async function POST(request: Request) {
 
     if (event === "seen" && nowMs - lastSeenMs < SEEN_MIN_INTERVAL_MS) {
       return Response.json({ ok: true, skipped: true });
+    }
+
+    if (!snap.exists) {
+      const owned = await db
+        .collection("devices")
+        .where("uid", "==", uid)
+        .count()
+        .get();
+      if (owned.data().count >= MAX_DEVICES_PER_USER) {
+        throw new HttpError(429, "Too many registered devices.");
+      }
     }
 
     // A burst of explicit logins from one device inside 30s is recorded once.

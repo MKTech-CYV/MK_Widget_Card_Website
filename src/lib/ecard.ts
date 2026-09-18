@@ -335,6 +335,7 @@ export function getEcardLocale(searchParams: EcardSearchParams): EcardLocale {
 function escapeVCard(value: string) {
   return value
     .replace(/\\/g, "\\\\")
+    .replace(/\r\n|\r/g, "\n")
     .replace(/\n/g, "\\n")
     .replace(/,/g, "\\,")
     .replace(/;/g, "\\;");

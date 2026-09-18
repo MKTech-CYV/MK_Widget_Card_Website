@@ -130,6 +130,12 @@ export async function loadSharedEcard(code: string) {
 
 class CodeCollisionError extends Error {}
 
+export class ShareQuotaError extends Error {}
+
+// Presets are capped at 10 per user in the app; this is a generous ceiling so
+// nobody can mint unlimited links by writing presets straight to Firestore.
+const MAX_LINKS_PER_USER = 50;
+
 const MAX_CODE_ATTEMPTS = 5;
 
 // Returns the preset's short link, creating it (share_links/{code} plus
@@ -143,6 +149,25 @@ export async function ensureEcardShareLink(
 ): Promise<{ code: string; created: boolean } | null> {
   const db = adminDb();
   const presetRef = db.collection("user_ecards").doc(presetId);
+
+  const current = await presetRef.get();
+  const owner = current.get("user_id") as string | undefined;
+  const currentCode = current.get("share_code");
+  if (
+    current.exists &&
+    owner &&
+    (!expectedUid || owner === expectedUid) &&
+    !(typeof currentCode === "string" && SHARE_CODE_PATTERN.test(currentCode))
+  ) {
+    const owned = await db
+      .collection("share_links")
+      .where("uid", "==", owner)
+      .count()
+      .get();
+    if (owned.data().count >= MAX_LINKS_PER_USER) {
+      throw new ShareQuotaError();
+    }
+  }
 
   for (let attempt = 0; attempt < MAX_CODE_ATTEMPTS; attempt += 1) {
     const code = generateShareCode();

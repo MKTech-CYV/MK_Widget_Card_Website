@@ -44,6 +44,16 @@ export async function POST(request: Request) {
     const adminRef = db.collection("admin_users").doc(target.uid);
 
     if (makeAdmin) {
+      // An account created with an unverified email could be squatted by
+      // someone else, so admin is only ever granted to verified emails
+      // (Google/Apple sign-ins are verified by the provider).
+      if (!target.emailVerified) {
+        throw new HttpError(
+          400,
+          "Email này chưa được xác minh. Người đó cần đăng nhập bằng Google/Apple hoặc xác minh email trước khi được cấp quyền admin.",
+        );
+      }
+
       claims.admin = true;
       await auth.setCustomUserClaims(target.uid, claims);
       await adminRef.set(
