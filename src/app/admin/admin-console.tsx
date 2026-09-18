@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
-import type { Session } from "@supabase/supabase-js";
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  type User,
+} from "firebase/auth";
 import {
   Alert,
   Avatar,
@@ -9,24 +14,20 @@ import {
   Button,
   Card,
   ConfigProvider,
-  Empty,
   Grid,
   Input,
   Menu,
   Spin,
-  Statistic,
-  Table,
   Tag,
   theme,
   type MenuProps,
-  type TableColumnsType,
 } from "antd";
 import {
   ApiOutlined,
   AppstoreOutlined,
-  BellOutlined,
   CloudServerOutlined,
   DashboardOutlined,
+  HistoryOutlined,
   KeyOutlined,
   LoginOutlined,
   LogoutOutlined,
@@ -37,52 +38,23 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import {
-  getSupabaseBrowserClient,
-  getSupabasePublicConfig,
-} from "@/lib/supabase/client";
+import { getFirebaseAuth, getFirebasePublicConfig } from "@/lib/firebase/client";
+import { AdminsView } from "./views/admins-view";
+import { ContentView } from "./views/content-view";
+import { DevicesView } from "./views/devices-view";
+import { LoginsView } from "./views/logins-view";
+import { OverviewView } from "./views/overview-view";
+import { UsersView } from "./views/users-view";
 
-type AdminView = "overview" | "users" | "devices" | "content" | "settings";
+type AdminView =
+  | "overview"
+  | "users"
+  | "devices"
+  | "logins"
+  | "content"
+  | "admins"
+  | "settings";
 type AuthStatus = "checking" | "ready";
-
-type ModuleRow = {
-  key: string;
-  module: string;
-  scope: string;
-  status: "ready" | "pending";
-  owner: string;
-};
-
-const moduleRows: ModuleRow[] = [
-  {
-    key: "users",
-    module: "Users",
-    scope: "Hồ sơ, phân quyền, trạng thái tài khoản",
-    status: "ready",
-    owner: "Supabase Auth",
-  },
-  {
-    key: "devices",
-    module: "Devices",
-    scope: "Thiết bị, phiên đăng nhập, platform iOS/Android",
-    status: "pending",
-    owner: "App database",
-  },
-  {
-    key: "content",
-    module: "App content",
-    scope: "Banner, thông báo, cấu hình mobile app",
-    status: "pending",
-    owner: "CMS tables",
-  },
-  {
-    key: "push",
-    module: "Push campaigns",
-    scope: "Chiến dịch notification và lịch gửi",
-    status: "pending",
-    owner: "Messaging",
-  },
-];
 
 const menuItems: MenuProps["items"] = [
   {
@@ -101,9 +73,19 @@ const menuItems: MenuProps["items"] = [
     label: "Thiết bị",
   },
   {
+    key: "logins",
+    icon: <HistoryOutlined />,
+    label: "Lịch sử đăng nhập",
+  },
+  {
     key: "content",
     icon: <AppstoreOutlined />,
     label: "Nội dung app",
+  },
+  {
+    key: "admins",
+    icon: <SafetyCertificateOutlined />,
+    label: "Quản trị viên",
   },
   {
     key: "settings",
@@ -116,35 +98,32 @@ const viewLabels: Record<AdminView, string> = {
   overview: "Tổng quan",
   users: "Người dùng",
   devices: "Thiết bị",
+  logins: "Lịch sử đăng nhập",
   content: "Nội dung app",
+  admins: "Quản trị viên",
   settings: "Cấu hình",
 };
 
-function isAdminAllowed(session: Session | null, adminEmails: string[]) {
-  if (!session) {
-    return false;
-  }
+const authErrorMessages: Record<string, string> = {
+  "auth/invalid-credential": "Email hoặc mật khẩu không đúng.",
+  "auth/invalid-email": "Email không hợp lệ.",
+  "auth/user-disabled": "Tài khoản này đã bị vô hiệu hoá.",
+  "auth/too-many-requests":
+    "Đăng nhập sai quá nhiều lần. Vui lòng thử lại sau ít phút.",
+  "auth/network-request-failed": "Lỗi kết nối mạng. Vui lòng thử lại.",
+};
 
-  if (adminEmails.length === 0) {
-    return true;
-  }
+function getAuthErrorMessage(error: unknown) {
+  const code =
+    typeof error === "object" && error !== null && "code" in error
+      ? String((error as { code: unknown }).code)
+      : "";
 
-  return adminEmails.includes(session.user.email?.toLowerCase() ?? "");
-}
-
-function formatDate(value?: string) {
-  if (!value) {
-    return "Chưa có";
-  }
-
-  return new Intl.DateTimeFormat("vi-VN", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value));
+  return authErrorMessages[code] ?? "Không thể đăng nhập. Vui lòng thử lại.";
 }
 
 function LoginScreen() {
-  const config = getSupabasePublicConfig();
+  const config = getFirebasePublicConfig();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -155,23 +134,19 @@ function LoginScreen() {
     setError(null);
     const normalizedEmail = email.trim().toLowerCase();
 
-    const supabase = getSupabaseBrowserClient();
-    if (!supabase) {
-      setError(
-        "Thiếu Supabase public key. Hãy cấu hình NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY hoặc NEXT_PUBLIC_SUPABASE_ANON_KEY.",
-      );
+    const auth = getFirebaseAuth();
+    if (!auth) {
+      setError("Firebase chưa được cấu hình cho trang admin.");
       return;
     }
 
     setLoading(true);
-    const { error: signInError } = await supabase.auth.signInWithPassword({
-      email: normalizedEmail,
-      password,
-    });
-    setLoading(false);
-
-    if (signInError) {
-      setError(signInError.message);
+    try {
+      await signInWithEmailAndPassword(auth, normalizedEmail, password);
+    } catch (signInError) {
+      setError(getAuthErrorMessage(signInError));
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -184,7 +159,7 @@ function LoginScreen() {
           <p>Quản lý người dùng, thiết bị, nội dung và cấu hình vận hành app.</p>
           <div className="admin-login-api">
             <CloudServerOutlined />
-            <span>{config.restUrl}</span>
+            <span>{config.projectId}</span>
           </div>
         </div>
       </section>
@@ -195,7 +170,7 @@ function LoginScreen() {
             <Avatar size={48} icon={<SafetyCertificateOutlined />} />
             <div>
               <h2>Đăng nhập quản trị</h2>
-              <p>Supabase Auth</p>
+              <p>Firebase Auth</p>
             </div>
           </div>
 
@@ -203,8 +178,8 @@ function LoginScreen() {
             <Alert
               showIcon
               type="warning"
-              message="Chưa đủ cấu hình Supabase"
-              description="Cần thêm public key vào biến môi trường trước khi đăng nhập."
+              message="Chưa đủ cấu hình Firebase"
+              description="Cần cấu hình biến môi trường NEXT_PUBLIC_FIREBASE_* trước khi đăng nhập."
             />
           ) : null}
 
@@ -265,7 +240,7 @@ function AccessDenied({ onSignOut }: { onSignOut: () => Promise<void> }) {
           showIcon
           type="error"
           message="Tài khoản chưa được cấp quyền admin"
-          description="Email đã đăng nhập không nằm trong NEXT_PUBLIC_ADMIN_EMAILS."
+          description="Tài khoản này chưa có quyền admin. Hãy liên hệ quản trị viên hiện tại để được cấp quyền."
         />
         <Button icon={<LogoutOutlined />} onClick={onSignOut}>
           Đăng xuất
@@ -275,132 +250,43 @@ function AccessDenied({ onSignOut }: { onSignOut: () => Promise<void> }) {
   );
 }
 
-function OverviewPanel({ session }: { session: Session }) {
-  const columns: TableColumnsType<ModuleRow> = [
-    {
-      title: "Module",
-      dataIndex: "module",
-      key: "module",
-      render: (value: string) => <strong>{value}</strong>,
-    },
-    {
-      title: "Phạm vi",
-      dataIndex: "scope",
-      key: "scope",
-    },
-    {
-      title: "Trạng thái",
-      dataIndex: "status",
-      key: "status",
-      render: (value: ModuleRow["status"]) =>
-        value === "ready" ? <Tag color="green">Sẵn sàng</Tag> : <Tag>Chờ schema</Tag>,
-    },
-    {
-      title: "Nguồn",
-      dataIndex: "owner",
-      key: "owner",
-      responsive: ["md"],
-    },
-  ];
-
-  return (
-    <div className="admin-view">
-      <div className="admin-stats-grid">
-        <Card>
-          <Statistic
-            title="Auth session"
-            value="Active"
-            prefix={<SafetyCertificateOutlined />}
-          />
-        </Card>
-        <Card>
-          <Statistic title="Current user" value={session.user.email ?? "User"} />
-        </Card>
-        <Card>
-          <Statistic title="Last sign-in" value={formatDate(session.user.last_sign_in_at)} />
-        </Card>
-        <Card>
-          <Statistic title="Platforms" value="iOS / Android" prefix={<MobileOutlined />} />
-        </Card>
-      </div>
-
-      <Card title="Mobile app modules">
-        <Table
-          columns={columns}
-          dataSource={moduleRows}
-          pagination={false}
-          scroll={{ x: 760 }}
-        />
-      </Card>
-    </div>
-  );
-}
-
-function EmptySection({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) {
-  return (
-    <Card>
-      <Empty
-        image={Empty.PRESENTED_IMAGE_SIMPLE}
-        description={
-          <span className="admin-empty-copy">
-            <span className="admin-empty-icon">{icon}</span>
-            <strong>{title}</strong>
-            <span>{description}</span>
-          </span>
-        }
-      />
-    </Card>
-  );
-}
-
 function SettingsPanel() {
-  const config = getSupabasePublicConfig();
+  const config = getFirebasePublicConfig();
 
   return (
     <div className="admin-view">
       <div className="admin-settings-grid">
-        <Card title="Supabase">
+        <Card title="Firebase">
           <div className="admin-setting-list">
             <div>
-              <span>Project URL</span>
-              <strong>{config.projectUrl}</strong>
+              <span>Project ID</span>
+              <strong>{config.projectId}</strong>
             </div>
             <div>
-              <span>REST API</span>
-              <strong>{config.restUrl}</strong>
+              <span>Auth domain</span>
+              <strong>{config.authDomain}</strong>
             </div>
             <div>
-              <span>Public key</span>
-              {config.publishableKey ? (
+              <span>Web API key</span>
+              {config.apiKey ? (
                 <Tag color="green">Đã cấu hình</Tag>
               ) : (
                 <Tag color="red">Thiếu</Tag>
               )}
             </div>
             <div>
-              <span>Admin emails</span>
-              <strong>
-                {config.adminEmails.length > 0
-                  ? `${config.adminEmails.length} email`
-                  : "Cho phép mọi user đã đăng nhập"}
-              </strong>
+              <span>Phân quyền admin</span>
+              <strong>Custom claim admin (Firebase Auth)</strong>
             </div>
           </div>
         </Card>
 
         <Card title="Security checklist">
           <div className="admin-checklist">
-            <Badge status="success" text="Supabase Auth email/password" />
-            <Badge status="processing" text="RLS policies cho từng bảng mobile app" />
-            <Badge status="processing" text="Admin role claim hoặc bảng admin_users" />
+            <Badge status="success" text="Firebase Auth email/password" />
+            <Badge status="success" text="Firestore Security Rules cho từng collection mobile app" />
+            <Badge status="success" text="Admin role qua custom claim, kiểm tra cả ở server" />
+            <Badge status="success" text="Lịch sử đăng nhập tự xoá sau 180 ngày (Firestore TTL)" />
             <Badge status="default" text="Audit log cho thao tác quản trị" />
           </div>
         </Card>
@@ -410,10 +296,10 @@ function SettingsPanel() {
 }
 
 function AdminDashboard({
-  session,
+  user,
   onSignOut,
 }: {
-  session: Session;
+  user: User;
   onSignOut: () => Promise<void>;
 }) {
   const screens = Grid.useBreakpoint();
@@ -423,34 +309,20 @@ function AdminDashboard({
   function renderView() {
     switch (view) {
       case "users":
-        return (
-          <EmptySection
-            icon={<TeamOutlined />}
-            title="User management"
-            description="Sẵn sàng nối bảng profiles hoặc auth user mirror."
-          />
-        );
+        return <UsersView />;
       case "devices":
-        return (
-          <EmptySection
-            icon={<MobileOutlined />}
-            title="Device registry"
-            description="Sẵn sàng nối bảng devices, app_version và platform."
-          />
-        );
+        return <DevicesView />;
+      case "logins":
+        return <LoginsView />;
       case "content":
-        return (
-          <EmptySection
-            icon={<BellOutlined />}
-            title="App content"
-            description="Sẵn sàng nối banner, notification và remote config."
-          />
-        );
+        return <ContentView />;
+      case "admins":
+        return <AdminsView currentEmail={user.email} />;
       case "settings":
         return <SettingsPanel />;
       case "overview":
       default:
-        return <OverviewPanel session={session} />;
+        return <OverviewView user={user} />;
     }
   }
 
@@ -483,8 +355,8 @@ function AdminDashboard({
           <div className="admin-user">
             <Avatar icon={<UserOutlined />} />
             <div>
-              <strong>{session.user.email}</strong>
-              <span>{session.user.role}</span>
+              <strong>{user.email}</strong>
+              <span>Admin</span>
             </div>
             <Button icon={<LogoutOutlined />} onClick={onSignOut}>
               Đăng xuất
@@ -507,46 +379,56 @@ function AdminLoading() {
 }
 
 export function AdminConsole() {
-  const config = getSupabasePublicConfig();
+  const config = getFirebasePublicConfig();
   const [status, setStatus] = useState<AuthStatus>(
     config.isConfigured ? "checking" : "ready",
   );
-  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const supabase = getSupabaseBrowserClient();
-    if (!supabase) {
+    const auth = getFirebaseAuth();
+    if (!auth) {
       return;
     }
 
     let mounted = true;
 
-    supabase.auth.getSession().then(({ data }) => {
+    const unsubscribe = onAuthStateChanged(auth, async (nextUser) => {
+      if (!nextUser) {
+        if (mounted) {
+          setUser(null);
+          setIsAdmin(false);
+          setStatus("ready");
+        }
+        return;
+      }
+
+      // Force a token refresh so a claim granted after the last sign-in is
+      // picked up without asking the user to log out and back in.
+      const tokenResult = await nextUser.getIdTokenResult(true).catch(() => null);
       if (!mounted) {
         return;
       }
 
-      setSession(data.session);
-      setStatus("ready");
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, nextSession) => {
-      setSession(nextSession);
+      setUser(nextUser);
+      setIsAdmin(tokenResult?.claims.admin === true);
       setStatus("ready");
     });
 
     return () => {
       mounted = false;
-      subscription.unsubscribe();
+      unsubscribe();
     };
   }, []);
 
   async function handleSignOut() {
-    const supabase = getSupabaseBrowserClient();
-    await supabase?.auth.signOut();
-    setSession(null);
+    const auth = getFirebaseAuth();
+    if (auth) {
+      await signOut(auth);
+    }
+    setUser(null);
+    setIsAdmin(false);
   }
 
   return (
@@ -570,12 +452,12 @@ export function AdminConsole() {
       }}
     >
       {status === "checking" ? <AdminLoading /> : null}
-      {status === "ready" && !session ? <LoginScreen /> : null}
-      {status === "ready" && session && !isAdminAllowed(session, config.adminEmails) ? (
+      {status === "ready" && !user ? <LoginScreen /> : null}
+      {status === "ready" && user && !isAdmin ? (
         <AccessDenied onSignOut={handleSignOut} />
       ) : null}
-      {status === "ready" && session && isAdminAllowed(session, config.adminEmails) ? (
-        <AdminDashboard session={session} onSignOut={handleSignOut} />
+      {status === "ready" && user && isAdmin ? (
+        <AdminDashboard user={user} onSignOut={handleSignOut} />
       ) : null}
     </ConfigProvider>
   );
